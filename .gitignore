@@ -6,7 +6,8 @@
 *.import
 
 # Builds/export directory
-builds/
+build/
+build/*
 
 # Imported translations (automatically generated from CSV files)
 *.translation
