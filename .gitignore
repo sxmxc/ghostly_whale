@@ -3,9 +3,10 @@
 
 # Godot-specific ignores
 .import/
+*.import
 
 # Builds/export directory
-builds
+builds/
 
 # Imported translations (automatically generated from CSV files)
 *.translation
