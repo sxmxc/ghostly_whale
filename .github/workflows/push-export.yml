@@ -31,7 +31,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: windows
-          path: build/windows
+          path: ${{ github.workspace }}/build/windows
       - name: Zip Folder
         run: zip -r itch.zip build/windows
       - name: Deploy to itch.io
@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: linux
-          path: build/linux
+          path: ${{ github.workspace }}/build/linux
       - name: Zip Folder
         run: zip -r itch.zip build/linux
       - name: Deploy to itch.io
@@ -143,7 +143,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: mac
-          path: build/mac
+          path: ${{ github.workspace }}/build/mac
       - name: Zip Folder
         run: zip -r itch.zip build/mac
       - name: Deploy to itch.io
@@ -193,7 +193,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: android
-          path: build/android
+          path: ${{ github.workspace }}/build/android
       - name: Zip Folder
         run: zip -r itch.zip build/android
       - name: Deploy to itch.io
