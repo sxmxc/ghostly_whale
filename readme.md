@@ -1,5 +1,4 @@
 [![Push Export](https://github.com/sxmxc/ghostly_whale/actions/workflows/push-export.yml/badge.svg?branch=main)](https://github.com/sxmxc/ghostly_whale/actions/workflows/push-export.yml)
 [![pages-build-deployment](https://github.com/sxmxc/ghostly_whale/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/sxmxc/ghostly_whale/actions/workflows/pages/pages-build-deployment)
-[![Latest release](https://badgen.net/github/release/Naereen/Strapdown.js)](https://github.com/sxmxc/ghostly_whale/releases)
-[![GitHub latest commit](https://badgen.net/github/last-commit/Naereen/Strapdown.js)](https://github.com/sxmxc/ghostly_whale/commit/)
-[![Only 32 Kb](https://badge-size.herokuapp.com/Naereen/StrapDown.js/master/strapdown.min.js)](https://github.com/sxmxc/ghostly_whale/releases/blob/master/)
+https://img.shields.io/github/last-commit/sxmxc/ghostly_whale
+https://img.shields.io/github/languages/code-size/sxmxc/ghostly_whale
