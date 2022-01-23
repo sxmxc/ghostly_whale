@@ -40,7 +40,7 @@ func _on_Resume_pressed():
 
 func _on_Main_Menu_pressed():
 	Game.change_scene("res://scenes/menu/menu.tscn", {
-		'show_progress_bar': false
+		'show_progress_bar': true
 	})
 
 

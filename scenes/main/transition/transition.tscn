@@ -1,9 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/open-sans/open-sans-regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/sprites/icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/TRAPS.png" type="Texture" id=2]
 [ext_resource path="res://scenes/main/transition/progress.gd" type="Script" id=3]
 [ext_resource path="res://scenes/main/transition/transition.gd" type="Script" id=4]
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 1231, 2049.27, 302.104, 287.117 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -22,8 +27,12 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
+[sub_resource type="DynamicFont" id=4]
+size = 18
+font_data = ExtResource( 1 )
+
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.305882, 0.560784, 0.74902, 1 )
+bg_color = Color( 0.568627, 0.0117647, 0.0117647, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -36,7 +45,7 @@ corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.176471, 0.282353, 0.372549, 1 )
+bg_color = Color( 0, 0, 0, 1 )
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -51,10 +60,6 @@ expand_margin_left = 2.0
 expand_margin_right = 2.0
 expand_margin_top = 2.0
 expand_margin_bottom = 2.0
-
-[sub_resource type="DynamicFont" id=4]
-size = 18
-font_data = ExtResource( 1 )
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -246,17 +251,17 @@ __meta__ = {
 
 [node name="Spinner" type="TextureRect" parent="ColorRect/Progress"]
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -40.0
-margin_top = -99.0
-margin_right = 40.0
-margin_bottom = -19.0
-rect_scale = Vector2( 0.6, 0.6 )
-rect_pivot_offset = Vector2( 40, 40 )
+margin_left = -60.0
+margin_top = -76.0
+margin_right = 70.0
+margin_bottom = 46.0
+rect_scale = Vector2( 0.3, 0.3 )
+rect_pivot_offset = Vector2( 63.2942, 59.1622 )
 mouse_filter = 2
-texture = ExtResource( 2 )
+texture = SubResource( 9 )
+expand = true
+stretch_mode = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -275,9 +280,9 @@ margin_left = -85.0
 margin_top = -11.0
 margin_right = 85.0
 margin_bottom = 11.0
+custom_fonts/font = SubResource( 4 )
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
-custom_fonts/font = SubResource( 4 )
 max_value = 1.0
 percent_visible = false
 __meta__ = {

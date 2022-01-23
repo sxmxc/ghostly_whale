@@ -1,0 +1,74 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/gameplay/HudTimer.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gameplay/HUD.gd" type="Script" id=2]
+[ext_resource path="res://scenes/menu/who_asks_satan_font_med.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/gameplay/VectorCreator.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=6]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Margin" type="MarginContainer" parent="."]
+margin_left = 33.0
+margin_top = 98.0
+margin_right = 169.0
+margin_bottom = 243.0
+mouse_filter = 2
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+margin_right = 159.0
+margin_bottom = 145.0
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
+margin_right = 159.0
+margin_bottom = 30.0
+
+[node name="Label" type="Label" parent="Margin/VBox/HBox"]
+margin_right = 140.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Player Score."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Margin/VBox/HBox"]
+margin_left = 144.0
+margin_right = 159.0
+margin_bottom = 30.0
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HudTimer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 127.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Value" type="Label" parent="HudTimer"]
+margin_left = 565.0
+margin_top = 30.0
+margin_right = 715.0
+margin_bottom = 96.0
+theme = ExtResource( 6 )
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "00 . 00"
+
+[node name="Timer" type="Timer" parent="HudTimer"]
+
+[node name="VectorCreator" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1, -2 )
+
+[connection signal="timeout" from="HudTimer/Timer" to="HudTimer" method="_on_Timer_timeout"]

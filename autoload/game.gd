@@ -10,6 +10,10 @@ var size: Vector2 setget , get_size
 
 onready var main: Main = get_node_or_null("/root/Main")
 
+var player_score = 0
+var bonus_score = 0
+var score_muliplier = 1
+
 
 func _ready():
 	if main == null:

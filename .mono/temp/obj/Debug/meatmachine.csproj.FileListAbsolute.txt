@@ -1,0 +1,8 @@
+D:\Projects\Godot\ghostly_whale\.mono\temp\obj\Debug\meatmachine.csprojAssemblyReference.cache
+D:\Projects\Godot\ghostly_whale\.mono\temp\obj\Debug\meatmachine.AssemblyInfoInputs.cache
+D:\Projects\Godot\ghostly_whale\.mono\temp\obj\Debug\meatmachine.AssemblyInfo.cs
+D:\Projects\Godot\ghostly_whale\.mono\temp\obj\Debug\meatmachine.csproj.CoreCompileInputs.cache
+D:\Projects\Godot\ghostly_whale\.mono\temp\bin\Debug\meatmachine.dll
+D:\Projects\Godot\ghostly_whale\.mono\temp\bin\Debug\meatmachine.pdb
+D:\Projects\Godot\ghostly_whale\.mono\temp\obj\Debug\meatmachine.dll
+D:\Projects\Godot\ghostly_whale\.mono\temp\obj\Debug\meatmachine.pdb
