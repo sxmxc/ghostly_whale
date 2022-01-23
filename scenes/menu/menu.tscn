@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://scenes/menu/who_asks_satan_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/menu/help_me_large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/menu/play-button.gd" type="Script" id=2]
 [ext_resource path="res://scenes/menu/exit-button.gd" type="Script" id=3]
 [ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=4]
@@ -81,11 +81,14 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="CenterContainer"]
-margin_left = 495.0
-margin_top = 162.0
-margin_right = 784.0
-margin_bottom = 219.0
+margin_left = 383.0
+margin_top = 153.0
+margin_right = 897.0
+margin_bottom = 227.0
 custom_colors/font_color = Color( 0.721569, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
 custom_fonts/font = ExtResource( 1 )
 text = "Meat Machine"
 align = 1
@@ -156,14 +159,14 @@ __meta__ = {
 
 [node name="GameVersion" type="Label" parent="Version"]
 margin_right = 182.0
-margin_bottom = 30.0
+margin_bottom = 19.0
 text = "<x.y.z>"
 script = ExtResource( 6 )
 
 [node name="GodotVersion" type="Label" parent="Version"]
-margin_top = 34.0
+margin_top = 23.0
 margin_right = 182.0
-margin_bottom = 64.0
+margin_bottom = 42.0
 theme = ExtResource( 4 )
 text = "<GodotVersion>"
 script = ExtResource( 8 )
@@ -185,14 +188,14 @@ __meta__ = {
 
 [node name="MadeByLabel" type="Label" parent="Credits"]
 margin_right = 131.0
-margin_bottom = 30.0
+margin_bottom = 19.0
 theme = ExtResource( 4 )
 text = "made by:"
 
 [node name="Developer1" type="Label" parent="Credits"]
-margin_top = 34.0
+margin_top = 23.0
 margin_right = 131.0
-margin_bottom = 64.0
+margin_bottom = 42.0
 grow_horizontal = 0
 theme = ExtResource( 4 )
 text = "VoidMoose"

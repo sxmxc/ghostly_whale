@@ -1,8 +1,9 @@
-[gd_resource type="Theme" load_steps=11 format=2]
+[gd_resource type="Theme" load_steps=13 format=2]
 
-[ext_resource path="res://scenes/menu/who_asks_satan_font_small.tres" type="DynamicFont" id=1]
-[ext_resource path="res://scenes/menu/who_asks_satan_font_med.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/menu/help_me.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/menu/help_me_medium.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/sprites/ui_concrete.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/TRAPS.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
@@ -32,6 +33,18 @@ atlas = SubResource( 3 )
 texture = SubResource( 4 )
 region_rect = Rect2( 16, 64, 128, 32 )
 
+[sub_resource type="StyleBoxTexture" id=8]
+content_margin_left = 20.0
+content_margin_right = 20.0
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 105, 33, 866, 868 )
+margin_left = 127.017
+margin_right = 119.319
+margin_top = 138.564
+margin_bottom = 138.564
+
 [resource]
 default_font = ExtResource( 1 )
 Button/colors/font_color = Color( 0.317647, 0.0392157, 0.0313726, 1 )
@@ -51,3 +64,4 @@ OptionButton/styles/focus = null
 OptionButton/styles/hover = null
 OptionButton/styles/normal = null
 OptionButton/styles/pressed = null
+Panel/styles/panel = SubResource( 8 )

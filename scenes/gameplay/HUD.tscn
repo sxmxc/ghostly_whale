@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/gameplay/HudTimer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/HUD.gd" type="Script" id=2]
-[ext_resource path="res://scenes/menu/who_asks_satan_font_med.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/menu/help_me_large.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/menu/help_me_medium.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/gameplay/VectorCreator.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=6]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
+
+[node name="VectorCreator" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1, -2 )
 
 [node name="Margin" type="MarginContainer" parent="."]
 margin_left = 33.0
@@ -21,27 +25,34 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
-margin_right = 159.0
+margin_right = 269.0
 margin_bottom = 145.0
 
 [node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
-margin_right = 159.0
-margin_bottom = 30.0
+margin_right = 269.0
+margin_bottom = 37.0
 
 [node name="Label" type="Label" parent="Margin/VBox/HBox"]
-margin_right = 140.0
-margin_bottom = 30.0
+margin_right = 248.0
+margin_bottom = 37.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Player Score."
+custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Player Score:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="Margin/VBox/HBox"]
-margin_left = 144.0
-margin_right = 159.0
-margin_bottom = 30.0
+margin_left = 252.0
+margin_right = 269.0
+margin_bottom = 37.0
 custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 4 )
 text = "0"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -51,24 +62,24 @@ __meta__ = {
 anchor_right = 1.0
 margin_bottom = 127.0
 mouse_filter = 2
+theme = ExtResource( 6 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Value" type="Label" parent="HudTimer"]
-margin_left = 565.0
-margin_top = 30.0
-margin_right = 715.0
-margin_bottom = 96.0
-theme = ExtResource( 6 )
+margin_left = 561.0
+margin_top = 26.0
+margin_right = 718.0
+margin_bottom = 100.0
 custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
 custom_fonts/font = ExtResource( 3 )
-text = "00 . 00"
+text = "00:00"
 
 [node name="Timer" type="Timer" parent="HudTimer"]
-
-[node name="VectorCreator" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1, -2 )
 
 [connection signal="timeout" from="HudTimer/Timer" to="HudTimer" method="_on_Timer_timeout"]
