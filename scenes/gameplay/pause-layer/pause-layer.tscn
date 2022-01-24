@@ -70,16 +70,30 @@ __meta__ = {
 }
 
 [node name="Resume" type="Button" parent="Pause/VBoxOptions"]
-margin_right = 240.0
-margin_bottom = 66.0
+margin_right = 225.0
+margin_bottom = 37.0
 text = "RESUME"
 
+[node name="Restart" type="Button" parent="Pause/VBoxOptions"]
+margin_top = 57.0
+margin_right = 225.0
+margin_bottom = 94.0
+text = "Restart"
+
 [node name="Main Menu" type="Button" parent="Pause/VBoxOptions"]
-margin_top = 86.0
-margin_right = 240.0
-margin_bottom = 152.0
+margin_top = 114.0
+margin_right = 225.0
+margin_bottom = 151.0
 text = " MAIN MENU "
+
+[node name="Level Selection" type="Button" parent="Pause/VBoxOptions"]
+margin_top = 171.0
+margin_right = 225.0
+margin_bottom = 208.0
+text = "Levels "
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="Pause/VBoxOptions/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Pause/VBoxOptions/Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Pause/VBoxOptions/Main Menu" to="." method="_on_Main_Menu_pressed"]
+[connection signal="pressed" from="Pause/VBoxOptions/Level Selection" to="." method="_on_Level_Selection_pressed"]

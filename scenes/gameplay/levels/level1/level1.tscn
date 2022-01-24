@@ -1,22 +1,24 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/gameplay/Ragdoll.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/gameplay/pause-layer/pause-layer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/TileSetterOut/Brick/Brick/tileset_Brick.tres" type="TileSet" id=3]
-[ext_resource path="res://scenes/gameplay/HUD.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/gameplay/gameplay.gd" type="Script" id=5]
-[ext_resource path="res://scenes/gameplay/KillZone.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/gameplay/RoundEnd.tscn" type="PackedScene" id=7]
-[ext_resource path="res://assets/Final/Background_0.png" type="Texture" id=12]
-[ext_resource path="res://assets/Final/Background_1.png" type="Texture" id=13]
+[ext_resource path="res://input/touchJoyPad.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/gameplay/KillZone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/gameplay/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/gameplay/RoundEnd.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/gameplay/VectorCreator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/TileSetterOut/Brick/Brick/tileset_Brick.tres" type="TileSet" id=8]
+[ext_resource path="res://assets/Final/Background_0.png" type="Texture" id=9]
+[ext_resource path="res://assets/Final/Background_1.png" type="Texture" id=10]
+[ext_resource path="res://scenes/gameplay/levels/level1/level1.gd" type="Script" id=11]
 
-[node name="Gameplay" type="Node"]
-script = ExtResource( 5 )
+[node name="Level1" type="Node"]
+script = ExtResource( 11 )
 
 [node name="PauseLayer" parent="." instance=ExtResource( 2 )]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 8 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 9
 format = 1
@@ -25,12 +27,12 @@ tile_data = PoolIntArray( 0, 0, 4, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 
 [node name="Ragdoll" parent="." instance=ExtResource( 1 )]
 position = Vector2( 157, 404 )
 
-[node name="KillZone" parent="." instance=ExtResource( 6 )]
+[node name="KillZone" parent="." instance=ExtResource( 4 )]
 
 [node name="SpawnPoint" type="Position2D" parent="." groups=["spawn_point"]]
 position = Vector2( 156, 373 )
 
-[node name="HUD" parent="." instance=ExtResource( 4 )]
+[node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -44,7 +46,7 @@ anchor_bottom = 1.0
 margin_right = 1279.0
 margin_bottom = 715.0
 mouse_filter = 2
-texture = ExtResource( 12 )
+texture = ExtResource( 9 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,13 +61,39 @@ anchor_bottom = 1.0
 margin_right = 1279.0
 margin_bottom = 715.0
 mouse_filter = 2
-texture = ExtResource( 13 )
+texture = ExtResource( 10 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RoundEnd" parent="." instance=ExtResource( 7 )]
+[node name="RoundEnd" parent="." instance=ExtResource( 6 )]
+
+[node name="Input" type="CanvasLayer" parent="."]
+
+[node name="VectorCreator" parent="Input" groups=["JoyStick"] instance=ExtResource( 7 )]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Input"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -1.0
+margin_right = 1.0
+margin_bottom = -1.0
+mouse_filter = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GamePad" parent="Input/ViewportContainer" instance=ExtResource( 3 )]
+z_index = 1
+leftPadStyle = "JoyStick"
+mapAnalogToDpad = false
+visibleOnlyTouchscreen = false
+AnalogTapToShow = true
 
 [connection signal="ragdoll_destroyed" from="Ragdoll" to="." method="_on_Ragdoll_ragdoll_destroyed"]
 [connection signal="ragdoll_high_impact" from="Ragdoll" to="." method="_on_Ragdoll_ragdoll_high_impact"]

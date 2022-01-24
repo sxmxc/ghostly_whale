@@ -86,6 +86,7 @@ speed_scale = 2.76
 explosiveness = 1.0
 randomness = 1.0
 visibility_rect = Rect2( -27.0876, -22.4753, 57.8728, 52.6469 )
+local_coords = false
 process_material = SubResource( 42 )
 
 [node name="Sprite" type="Sprite" parent="Head"]
@@ -123,6 +124,7 @@ speed_scale = 2.76
 explosiveness = 1.0
 randomness = 1.0
 visibility_rect = Rect2( -27.0876, -22.4753, 57.8728, 52.6469 )
+local_coords = false
 process_material = SubResource( 42 )
 
 [node name="Sprite" type="Sprite" parent="Body"]

@@ -10,6 +10,38 @@
 [ext_resource path="res://scenes/menu/godot-version.gd" type="Script" id=8]
 [ext_resource path="res://scenes/menu/MenuLight.gd" type="Script" id=9]
 
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 38.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "light_swing"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 38.0, -38.0 ]
+}
+
 [sub_resource type="Curve" id=1]
 max_value = 100.0
 _data = [ Vector2( 0, 0 ), 0.0, -287.151, 0, 0, Vector2( 0.994565, 100 ), -211.182, 0.0, 0, 0 ]
@@ -47,38 +79,6 @@ scale_random = 1.0
 scale_curve = SubResource( 4 )
 color = Color( 0.721569, 0, 0, 1 )
 
-[sub_resource type="Animation" id=8]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("Light2D:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 38.0 ]
-}
-
-[sub_resource type="Animation" id=9]
-resource_name = "light_swing"
-length = 3.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Light2D:rotation_degrees")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1.51572, 1.51572 ),
-"update": 0,
-"values": [ 38.0, -38.0 ]
-}
-
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -96,6 +96,28 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.254902, 0.254902, 0.254902, 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 640, -145 )
+scale = Vector2( 1.14746, 3.58472 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, 200 )
+texture_scale = 0.5
+color = Color( 0.968627, 0.678431, 0.678431, 1 )
+script = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
+anims/RESET = SubResource( 8 )
+anims/light_swing = SubResource( 9 )
+
+[node name="FlickerTween" type="Tween" parent="Light2D"]
+
+[node name="SwayTween" type="Tween" parent="Light2D"]
+
+[node name="Timer" type="Timer" parent="Light2D"]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -247,24 +269,6 @@ margin_bottom = 148.0
 grow_horizontal = 0
 theme = ExtResource( 4 )
 text = "Developer 3"
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.254902, 0.254902, 0.254902, 1 )
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 636.708, -57.907 )
-rotation = 0.663225
-scale = Vector2( 1.09492, 2.91264 )
-texture = ExtResource( 5 )
-offset = Vector2( -6, 202 )
-texture_scale = 0.5
-color = Color( 0.968627, 0.678431, 0.678431, 1 )
-script = ExtResource( 9 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
-root_node = NodePath("../..")
-anims/RESET = SubResource( 8 )
-anims/light_swing = SubResource( 9 )
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="VBoxContainer/PlayButton" method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="VBoxContainer/ExitButton" method="_on_ExitButton_pressed"]
