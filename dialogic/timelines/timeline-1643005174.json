@@ -1,0 +1,107 @@
+{
+	"events": [
+		{
+			"action": "join",
+			"character": "character-1643005261.json",
+			"event_id": "dialogic_002",
+			"mirror": true,
+			"portrait": "Irritated",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1643005261.json",
+			"event_id": "dialogic_001",
+			"portrait": "Angry",
+			"text": "[shake rate=20  level=10]KRUUUUUUUUUUUMM!!!!!!!!!![/shake]"
+		},
+		{
+			"action": "join",
+			"character": "character-1643004451.json",
+			"event_id": "dialogic_002",
+			"mirror": false,
+			"portrait": "Stunning",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1643004451.json",
+			"event_id": "dialogic_001",
+			"portrait": "Scared",
+			"text": "Yes, King Lo. Sir. Is there a problem sir? "
+		},
+		{
+			"character": "character-1643005261.json",
+			"event_id": "dialogic_001",
+			"portrait": "Angry",
+			"text": "[shake rate=20  level=10]YES THERE IS A PROBLEM! MY TABLE IS EMPTY! WHERE IS MY MEAT?!?![/shake]"
+		},
+		{
+			"character": "character-1643004451.json",
+			"event_id": "dialogic_001",
+			"portrait": "Scared",
+			"text": "Sir, there was a problem with the supply. But, the issue has been resolved. Dinner will be server shortly sir. "
+		},
+		{
+			"character": "character-1643005261.json",
+			"event_id": "dialogic_001",
+			"portrait": "Irritated",
+			"text": "It better be.."
+		},
+		{
+			"action": "leaveall",
+			"character": "character-1643005261.json",
+			"event_id": "dialogic_003"
+		},
+		{
+			"action": "join",
+			"character": "character-1643004451.json",
+			"event_id": "dialogic_002",
+			"mirror": true,
+			"portrait": "Stunning",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
+		},
+		{
+			"character": "character-1643004451.json",
+			"event_id": "dialogic_001",
+			"portrait": "Talking",
+			"text": "Alright peon. Fresh batch of hyoomies just arrived. Best get them in the grinder ASAP. Or, i'll be filling it with you. "
+		},
+		{
+			"action": "leaveall",
+			"character": "character-1643004451.json",
+			"event_id": "dialogic_003"
+		},
+		{
+			"character": "character-1643005999.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Oof. Best not leave Krum and King Lo waiting. Slingshot the bodies into the grinder. Touch anywhere on screen and  pull back. Release to slingshot the meat sack. [color=#A5EFAC]Tip[/color]  [wave amp=50 freq=5]you can slingshot mid air.[/wave]"
+		},
+		{
+			"emit_signal": "",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.3",
+		"file": "timeline-1643005174.json",
+		"name": "tutorial"
+	}
+}

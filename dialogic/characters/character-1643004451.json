@@ -1,0 +1,68 @@
+{
+	"color": "#ff41b506",
+	"description": "Master of meat. Tasked with preparing meals for entire colony.  ",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1643004451.json",
+	"mirror_portraits": false,
+	"name": "Krum",
+	"nickname": "Master of meat",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": -200,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/portraits/3 Troll/Calm.png"
+		},
+		{
+			"name": "Amazed",
+			"path": "res://assets/sprites/portraits/3 Troll/Amazed.png"
+		},
+		{
+			"name": "Angry",
+			"path": "res://assets/sprites/portraits/3 Troll/Angry.png"
+		},
+		{
+			"name": "Calm",
+			"path": "res://assets/sprites/portraits/3 Troll/Calm.png"
+		},
+		{
+			"name": "Furious",
+			"path": "res://assets/sprites/portraits/3 Troll/Furious.png"
+		},
+		{
+			"name": "Irritated",
+			"path": "res://assets/sprites/portraits/3 Troll/Irritated.png"
+		},
+		{
+			"name": "Mocking",
+			"path": "res://assets/sprites/portraits/3 Troll/Mocking.png"
+		},
+		{
+			"name": "Sad",
+			"path": "res://assets/sprites/portraits/3 Troll/Sad.png"
+		},
+		{
+			"name": "Scared",
+			"path": "res://assets/sprites/portraits/3 Troll/Scared.png"
+		},
+		{
+			"name": "Stunning",
+			"path": "res://assets/sprites/portraits/3 Troll/Stunning.png"
+		},
+		{
+			"name": "Talking",
+			"path": "res://assets/sprites/portraits/3 Troll/Talking.png"
+		},
+		{
+			"name": "Thoughtful",
+			"path": "res://assets/sprites/portraits/3 Troll/Thoughtful.png"
+		},
+		{
+			"name": "Upset",
+			"path": "res://assets/sprites/portraits/3 Troll/Upset.png"
+		}
+	],
+	"scale": 100
+}

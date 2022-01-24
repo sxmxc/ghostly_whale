@@ -19,6 +19,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+# warning-ignore:integer_division
 	var minutes = int(timer.get_time_left()) / 60
 	var seconds = int(timer.get_time_left()) % 60
 	

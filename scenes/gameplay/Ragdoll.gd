@@ -20,7 +20,8 @@ export var destroying = false
 export var impact_threshold = 50
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	head_rigid_body.mode = RigidBody2D.MODE_KINEMATIC
+	body_rigid_body.mode = RigidBody2D.MODE_KINEMATIC
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -35,14 +36,18 @@ func _destroy():
 	body_particles.set_emitting(true)
 	head_rigid_body.sleeping = true
 	body_rigid_body.sleeping = true
+	self.visible = false
 	timer.start()
 	camera.shake(2,15,8)
 	yield(timer,"timeout")
-	emit_signal("ragdoll_destroyed")
 	self.call_deferred("queue_free")
+	emit_signal("ragdoll_destroyed")
+	
 	
 
 func launch(force: Vector2):
+	head_rigid_body.mode = RigidBody2D.MODE_RIGID
+	body_rigid_body.mode = RigidBody2D.MODE_RIGID
 	body_rigid_body.apply_impulse(Vector2.ZERO, force)
 
 func _on_VectorCreator_vector_created(vector):

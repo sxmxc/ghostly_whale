@@ -1,0 +1,68 @@
+{
+	"color": "#ffd70f0f",
+	"description": "All hail King Lo. Don't fuck up, or you might just find yourself as meat grinder fuel.",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1643005261.json",
+	"mirror_portraits": false,
+	"name": "King Lo",
+	"nickname": "The Defiler",
+	"nickname_bool": true,
+	"offset_x": 0,
+	"offset_y": -200,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Calm.png"
+		},
+		{
+			"name": "Amazed",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Amazed.png"
+		},
+		{
+			"name": "Angry",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Angry.png"
+		},
+		{
+			"name": "Calm",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Calm.png"
+		},
+		{
+			"name": "Furious",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Furious.png"
+		},
+		{
+			"name": "Irritated",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Irritated.png"
+		},
+		{
+			"name": "Mocking",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Mocking.png"
+		},
+		{
+			"name": "Sad",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Sad.png"
+		},
+		{
+			"name": "Scared",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Scared.png"
+		},
+		{
+			"name": "Stunning",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Stunning.png"
+		},
+		{
+			"name": "Talking",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Talking.png"
+		},
+		{
+			"name": "Thoughtful",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Thoughtful.png"
+		},
+		{
+			"name": "Upset",
+			"path": "res://assets/sprites/portraits/1 Toad_king/Upset.png"
+		}
+	],
+	"scale": 100
+}

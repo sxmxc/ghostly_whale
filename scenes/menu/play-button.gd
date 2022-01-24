@@ -9,7 +9,7 @@ func _ready():
 func _on_Button_pressed():
 	var params = {
 		show_progress_bar = true,
-		"round_time" : 90,
+#		"round_time" : 90,
 #		"a_number": 10,
 #		"a_string": "Ciao mamma!",
 #		"an_array": [1, 2, 3, 4],
@@ -18,4 +18,4 @@ func _on_Button_pressed():
 #			"val": 15
 #		},
 	}
-	Game.change_scene("res://scenes/gameplay/gameplay.tscn", params)
+	Game.change_scene("res://scenes/gameplay/levels/level-selection/levelSelection.tscn", params)

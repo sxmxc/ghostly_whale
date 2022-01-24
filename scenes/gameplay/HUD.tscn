@@ -1,17 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/gameplay/HudTimer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/HUD.gd" type="Script" id=2]
 [ext_resource path="res://scenes/menu/help_me_large.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/menu/help_me_medium.tres" type="DynamicFont" id=4]
-[ext_resource path="res://scenes/gameplay/VectorCreator.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=6]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
-
-[node name="VectorCreator" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1, -2 )
 
 [node name="Margin" type="MarginContainer" parent="."]
 margin_left = 33.0

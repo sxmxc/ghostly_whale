@@ -33,19 +33,30 @@ func _reset():
 	update()
 
 func _input(event):
-	
+
 	if not touch_down:
 		return
-		
+
 	if event.is_action_released("ui_touch"):
 		touch_down = false
 		emit_signal("vector_created", vector * 2)
 		_reset()
-	
+
 	if event is InputEventMouseMotion:
 		position_end = event.position
 		vector = -(position_end - position_start).clamped(maximum_length)
 		update()
+
+#func analog_signal_change(analogPosition, analogName):
+#	if analogPosition:
+#		touch_down = true
+#		position_start = analogPosition
+#		update()
+#	else:
+#		touch_down = false
+#		vector = -(position_end - position_start).clamped(maximum_length)
+#		emit_signal("vector_created", vector * 2)
+#		_reset()
 
 func _on_input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("ui_touch"):

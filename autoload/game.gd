@@ -14,6 +14,8 @@ var player_score = 0
 var bonus_score = 0
 var score_muliplier = 1
 
+var save_dictionary = {}
+
 
 func _ready():
 	if main == null:

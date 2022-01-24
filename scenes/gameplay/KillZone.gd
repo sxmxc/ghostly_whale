@@ -1,6 +1,7 @@
 extends Area2D
 
 onready var particles = $Particles2D
+onready var explode_particles = $ExplodingParticles
 onready var animation_player = $AnimationPlayer
 
 
@@ -25,4 +26,6 @@ func _on_KillZone_body_entered(body):
 			body.get_parent()._destroy()
 			particles.restart()
 			particles.set_emitting(true)
+			explode_particles.restart()
+			explode_particles.set_emitting(true)
 	pass # Replace with function body.

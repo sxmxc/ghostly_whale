@@ -1,12 +1,46 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/menu/help_me_large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/menu/play-button.gd" type="Script" id=2]
 [ext_resource path="res://scenes/menu/exit-button.gd" type="Script" id=3]
 [ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/sprites/light_cone.png" type="Texture" id=5]
 [ext_resource path="res://scenes/menu/version.gd" type="Script" id=6]
 [ext_resource path="res://assets/sprites/ZombieInvasionBg1.png" type="Texture" id=7]
 [ext_resource path="res://scenes/menu/godot-version.gd" type="Script" id=8]
+[ext_resource path="res://scenes/menu/MenuLight.gd" type="Script" id=9]
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 38.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "light_swing"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 38.0, -38.0 ]
+}
 
 [sub_resource type="Curve" id=1]
 max_value = 100.0
@@ -31,7 +65,7 @@ curve = SubResource( 6 )
 trail_divisor = 4
 trail_size_modifier = SubResource( 7 )
 emission_shape = 2
-emission_box_extents = Vector3( 350, 1, 1 )
+emission_box_extents = Vector3( 200, 1, 1 )
 flag_disable_z = true
 gravity = Vector3( 0, 98, 0 )
 orbit_velocity = 0.0
@@ -54,15 +88,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -71,6 +96,28 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0.254902, 0.254902, 0.254902, 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 640, -145 )
+scale = Vector2( 1.14746, 3.58472 )
+texture = ExtResource( 5 )
+offset = Vector2( 0, 200 )
+texture_scale = 0.5
+color = Color( 0.968627, 0.678431, 0.678431, 1 )
+script = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
+anims/RESET = SubResource( 8 )
+anims/light_swing = SubResource( 9 )
+
+[node name="FlickerTween" type="Tween" parent="Light2D"]
+
+[node name="SwayTween" type="Tween" parent="Light2D"]
+
+[node name="Timer" type="Timer" parent="Light2D"]
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchor_right = 1.0
@@ -98,11 +145,12 @@ __meta__ = {
 }
 
 [node name="Particles2D" type="Particles2D" parent="CenterContainer"]
-position = Vector2( 646, 226 )
-amount = 20
+position = Vector2( 644, 205 )
+amount = 50
+lifetime = 3.0
 explosiveness = 0.03
 randomness = 1.0
-visibility_rect = Rect2( -348.75, -0.992218, 696.123, 113.679 )
+visibility_rect = Rect2( -183.954, -0.993805, 365.271, 113.556 )
 process_material = SubResource( 5 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -126,7 +174,7 @@ margin_bottom = 70.0
 rect_min_size = Vector2( 200, 70 )
 focus_neighbour_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
-text = "START"
+text = "Start"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -139,7 +187,7 @@ margin_bottom = 156.0
 rect_min_size = Vector2( 200, 70 )
 focus_neighbour_top = NodePath("../PlayButton")
 focus_previous = NodePath("../PlayButton")
-text = "EXIT"
+text = "Exit"
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -160,6 +208,7 @@ __meta__ = {
 [node name="GameVersion" type="Label" parent="Version"]
 margin_right = 182.0
 margin_bottom = 19.0
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "<x.y.z>"
 script = ExtResource( 6 )
 
@@ -168,6 +217,7 @@ margin_top = 23.0
 margin_right = 182.0
 margin_bottom = 42.0
 theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "<GodotVersion>"
 script = ExtResource( 8 )
 
@@ -190,6 +240,7 @@ __meta__ = {
 margin_right = 131.0
 margin_bottom = 19.0
 theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "made by:"
 
 [node name="Developer1" type="Label" parent="Credits"]
@@ -198,6 +249,7 @@ margin_right = 131.0
 margin_bottom = 42.0
 grow_horizontal = 0
 theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "VoidMoose"
 
 [node name="Developer2" type="Label" parent="Credits"]

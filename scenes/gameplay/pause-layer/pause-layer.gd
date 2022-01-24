@@ -46,3 +46,13 @@ func _on_Main_Menu_pressed():
 
 func _on_PauseButton_pressed():
 	pause_game()
+
+
+func _on_Restart_pressed():
+	pass # Replace with function body.
+
+
+func _on_Level_Selection_pressed():
+	Game.change_scene("res://scenes/gameplay/levels/level-selection/levelSelection.tscn", {
+		'show_progress_bar': true
+	})

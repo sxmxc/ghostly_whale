@@ -4,7 +4,7 @@ var elapsed = 0
 
 export var ragdoll_scene = preload("res://scenes/gameplay/Ragdoll.tscn")
 
-onready var launcher = $HUD/VectorCreator
+onready var launcher = $Input/VectorCreator
 onready var round_timer = $HUD/HudTimer
 onready var round_end_canvas = $RoundEnd
 
@@ -28,7 +28,10 @@ func start():
 	var active_scene: Node = Game.get_active_scene()
 	print("\nCurrent active scene is: ",
 		active_scene.name, " (", active_scene.filename, ")")
+	var new_dialog = Dialogic.start('tutorial')
+	add_child(new_dialog)
 	set_process(true)
+	yield(new_dialog,"dialogic_signal")
 	round_timer.connect("round_over", self, "_on_round_end")
 	round_timer._start_round(game_round_time)
 
