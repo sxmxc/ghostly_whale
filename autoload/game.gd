@@ -15,6 +15,18 @@ var bonus_score = 0
 var score_muliplier = 1
 
 var save_dictionary = {}
+var level_dictionary = {
+	1 : {"scene": "res://scenes/gameplay/levels/level1/level1.tscn",
+		"display_name": " Intro ",
+		"locked": false},
+	2 : {"scene": "res://scenes/gameplay/levels/level2/level2.tscn",
+		"display_name": " Level 2 ",
+		"locked": true},
+	3 : {"scene": "res://scenes/gameplay/levels/level1/level1.tscn",
+		"display_name": " Level 3 ",
+		"locked": true},
+}
+var current_level = 1
 
 
 func _ready():
