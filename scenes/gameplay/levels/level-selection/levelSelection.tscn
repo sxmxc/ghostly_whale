@@ -48,10 +48,10 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer2"]
-margin_left = 201.0
-margin_top = 340.0
-margin_right = 1080.0
-margin_bottom = 377.0
+margin_left = 640.0
+margin_top = 358.0
+margin_right = 640.0
+margin_bottom = 358.0
 theme = ExtResource( 2 )
 custom_constants/vseparation = 3
 custom_constants/hseparation = 20
@@ -59,38 +59,3 @@ columns = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="LevelButton" type="Button" parent="CenterContainer2/GridContainer"]
-margin_right = 159.0
-margin_bottom = 37.0
-text = " Level 1 "
-
-[node name="LevelButton2" type="Button" parent="CenterContainer2/GridContainer"]
-margin_left = 179.0
-margin_right = 339.0
-margin_bottom = 37.0
-disabled = true
-text = " Level 2 "
-
-[node name="LevelButton3" type="Button" parent="CenterContainer2/GridContainer"]
-margin_left = 359.0
-margin_right = 519.0
-margin_bottom = 37.0
-disabled = true
-text = " Level 3 "
-
-[node name="LevelButton4" type="Button" parent="CenterContainer2/GridContainer"]
-margin_left = 539.0
-margin_right = 699.0
-margin_bottom = 37.0
-disabled = true
-text = " Level 4 "
-
-[node name="LevelButton5" type="Button" parent="CenterContainer2/GridContainer"]
-margin_left = 719.0
-margin_right = 879.0
-margin_bottom = 37.0
-disabled = true
-text = " Level 5 "
-
-[connection signal="pressed" from="CenterContainer2/GridContainer/LevelButton" to="." method="_on_LevelButton_pressed"]

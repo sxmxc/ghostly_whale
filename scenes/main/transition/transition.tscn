@@ -1,14 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/open-sans/open-sans-regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://assets/sprites/TRAPS.png" type="Texture" id=2]
+[ext_resource path="res://assets/blade.png" type="Texture" id=2]
 [ext_resource path="res://scenes/main/transition/progress.gd" type="Script" id=3]
 [ext_resource path="res://scenes/main/transition/transition.gd" type="Script" id=4]
-
-[sub_resource type="AtlasTexture" id=9]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 1231, 2049.27, 302.104, 287.117 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle"
@@ -259,7 +254,7 @@ margin_bottom = 46.0
 rect_scale = Vector2( 0.3, 0.3 )
 rect_pivot_offset = Vector2( 63.2942, 59.1622 )
 mouse_filter = 2
-texture = SubResource( 9 )
+texture = ExtResource( 2 )
 expand = true
 stretch_mode = 5
 __meta__ = {

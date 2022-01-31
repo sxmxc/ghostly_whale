@@ -14,6 +14,9 @@ __meta__ = {
 [node name="Transitions" parent="." instance=ExtResource( 1 )]
 layer = 128
 
+[node name="Transitions2" parent="." instance=ExtResource( 1 )]
+layer = 128
+
 [node name="ActiveSceneContainer" type="Node" parent="."]
 pause_mode = 1
 

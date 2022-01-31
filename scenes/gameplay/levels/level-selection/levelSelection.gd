@@ -1,6 +1,8 @@
 extends Node2D
 
 
+onready var button_container = $CenterContainer2/GridContainer
+
 func pre_start(params):
 	print("\nlevelSelection.gd:pre_start() called with params = ")
 	if params:
@@ -17,6 +19,12 @@ func start():
 	print("\nCurrent active scene is: ",
 		active_scene.name, " (", active_scene.filename, ")")
 	set_process(true)
+	for level in Game.level_dictionary:
+		var button = Button.new()
+		button.text = Game.level_dictionary[level].display_name
+		button.disabled = Game.level_dictionary[level].locked
+		button_container.add_child(button)
+		button.connect("pressed", self, "_on_LevelButton_pressed", [Game.level_dictionary[level].scene])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,7 +32,7 @@ func start():
 #	pass
 
 
-func _on_LevelButton_pressed():
+func _on_LevelButton_pressed(level):
 	var params = {
 		show_progress_bar = true,
 		"round_time" : 90,
@@ -36,4 +44,4 @@ func _on_LevelButton_pressed():
 #			"val": 15
 #		},
 	}
-	Game.change_scene("res://scenes/gameplay/levels/level1/level1.tscn", params)
+	Game.change_scene(level, params)
