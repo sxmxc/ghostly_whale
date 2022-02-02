@@ -22,7 +22,7 @@ jobs:
         run: |
           mkdir -v -p ~/.local/share/godot/templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-      - name: Web Deploy to Pages
+      - name: Web build
         run: |
           mkdir -v -p build/web
           godot -v --export "HTML5" ./build/web/index.html
