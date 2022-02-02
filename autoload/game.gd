@@ -18,13 +18,16 @@ var save_dictionary = {}
 var level_dictionary = {
 	1 : {"scene": "res://scenes/gameplay/levels/level1/level1.tscn",
 		"display_name": " Intro ",
-		"locked": false},
+		"locked": false, 
+		"points_needed" : 0},
 	2 : {"scene": "res://scenes/gameplay/levels/level2/level2.tscn",
 		"display_name": " Level 2 ",
-		"locked": true},
-	3 : {"scene": "res://scenes/gameplay/levels/level1/level1.tscn",
+		"locked": false,
+		"points_needed" : 500},
+	3 : {"scene": "res://scenes/gameplay/levels/level3/level3.tscn",
 		"display_name": " Level 3 ",
-		"locked": true},
+		"locked": false,
+		"points_needed" : 1000},
 }
 var current_level = 1
 

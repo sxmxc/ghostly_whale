@@ -2,10 +2,10 @@
 	"events": [
 		{
 			"action": "join",
-			"character": "character-1643005261.json",
+			"character": "character-1643004451.json",
 			"event_id": "dialogic_002",
 			"mirror": true,
-			"portrait": "Irritated",
+			"portrait": "Angry",
 			"position": {
 				"0": true,
 				"1": false,
@@ -15,10 +15,24 @@
 			}
 		},
 		{
-			"character": "character-1643005261.json",
+			"character": "character-1643004451.json",
 			"event_id": "dialogic_001",
+			"portrait": "Talking",
+			"text": "Peon! That was the wrong fucking grinder! I hope King Lo doesn't...."
+		},
+		{
+			"action": "join",
+			"character": "character-1643005261.json",
+			"event_id": "dialogic_002",
+			"mirror": true,
 			"portrait": "Angry",
-			"text": "[shake rate=20  level=10]KRUUUUUUUUUUUMM!!!!!!!!!![/shake]"
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			}
 		},
 		{
 			"action": "join",
@@ -35,28 +49,28 @@
 			}
 		},
 		{
-			"character": "character-1643004451.json",
-			"event_id": "dialogic_001",
-			"portrait": "Scared",
-			"text": "Yes, King Lo. Sir. Is there a problem sir? "
-		},
-		{
 			"character": "character-1643005261.json",
 			"event_id": "dialogic_001",
 			"portrait": "Angry",
-			"text": "[shake rate=20  level=10]YES THERE IS A PROBLEM! MY TABLE IS EMPTY! WHERE IS MY MEAT?!?![/shake]"
-		},
-		{
-			"character": "character-1643004451.json",
-			"event_id": "dialogic_001",
-			"portrait": "Scared",
-			"text": "Sir, there was a problem with the supply. But, the issue has been resolved. Dinner will be server shortly sir. "
+			"text": "[shake rate=20  level=10]KRUUUUUUUUUUUMM!!!!!!!!!![/shake]"
 		},
 		{
 			"character": "character-1643005261.json",
 			"event_id": "dialogic_001",
 			"portrait": "Irritated",
-			"text": "It better be.."
+			"text": "Why is there hyoomie meat in the gyoomie grinder?!"
+		},
+		{
+			"character": "character-1643004451.json",
+			"event_id": "dialogic_001",
+			"portrait": "Scared",
+			"text": "The new peon..[nw] "
+		},
+		{
+			"character": "character-1643005261.json",
+			"event_id": "dialogic_001",
+			"portrait": "Angry",
+			"text": "It doesn't matter. I want my hyoomie stew ready in [shake rate=20  level=10]15 minutes!![/shake]"
 		},
 		{
 			"action": "leaveall",
@@ -68,7 +82,7 @@
 			"character": "character-1643004451.json",
 			"event_id": "dialogic_002",
 			"mirror": true,
-			"portrait": "Stunning",
+			"portrait": "Upset",
 			"position": {
 				"0": true,
 				"1": false,
@@ -80,8 +94,8 @@
 		{
 			"character": "character-1643004451.json",
 			"event_id": "dialogic_001",
-			"portrait": "Talking",
-			"text": "Alright peon. Fresh batch of hyoomie just arrived. Best get them in the grinder ASAP. Or, i'll be filling it with you. "
+			"portrait": "Angry",
+			"text": "Peon. You know what needs to be done. Make sure they are in the correct grinder this time."
 		},
 		{
 			"action": "leaveall",
@@ -92,7 +106,7 @@
 			"character": "character-1643005999.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Oof. Best not leave Krum and King Lo waiting. Slingshot the bodies into the grinder. Touch anywhere on screen and  pull back. Release to slingshot the meat sack. [color=#A5EFAC]Tip[/color]  [wave amp=50 freq=5]you can slingshot mid air.[/wave]"
+			"text": "Oof. Better get the hyoomie meat into the correct grinder this time. It that one. Waaaay down over there. Give the meat stack a good launch. "
 		},
 		{
 			"emit_signal": "",
@@ -101,7 +115,7 @@
 	],
 	"metadata": {
 		"dialogic-version": "1.3",
-		"file": "timeline-1643005174.json",
-		"name": "tutorial"
+		"file": "timeline-1643767462.json",
+		"name": "level2"
 	}
 }

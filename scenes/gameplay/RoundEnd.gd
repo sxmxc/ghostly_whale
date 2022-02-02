@@ -26,7 +26,7 @@ func _end_round():
 	total_score_label.text = str((Game.player_score + Game.bonus_score) * Game.score_muliplier)
 	get_tree().paused = true
 	panel.visible = true
-	Game.level_dictionary[Game.current_level + 1].locked = false
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -54,4 +54,7 @@ func _on_Continue_pressed():
 	#			"val": 15
 	#		},
 	}
-	Game.change_scene(Game.level_dictionary[Game.current_level + 1].scene, params)
+	Game.current_level += 1
+	if Game.current_level > Game.level_dictionary.size():
+		Game.current_level = Game.level_dictionary.size()
+	Game.change_scene(Game.level_dictionary[Game.current_level].scene, params)

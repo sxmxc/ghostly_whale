@@ -84,8 +84,8 @@ config/name="MeatMachine"
 run/main_scene="res://scenes/main/main.tscn"
 boot_splash/image="res://assets/splash.png"
 boot_splash/bg_color=Color( 0.0862745, 0.0862745, 0.0862745, 1 )
-config/icon="res://assets/sprites/icon.png"
-config/version="0.1.0-alpha"
+config/icon="res://assets/blade.png"
+config/version="0.2.0-alpha"
 
 [autoload]
 
@@ -97,12 +97,16 @@ window/size/width=1280
 window/size/height=720
 window/dpi/allow_hidpi=true
 window/handheld/orientation="sensor_landscape"
-window/stretch/mode="viewport"
+window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/ResolutionManager/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
+
+[gui]
+
+theme/use_hidpi=true
 
 [input]
 

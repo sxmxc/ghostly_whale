@@ -49,7 +49,7 @@ func _on_PauseButton_pressed():
 
 
 func _on_Restart_pressed():
-	pass # Replace with function body.
+	Game.restart_scene()
 
 
 func _on_Level_Selection_pressed():

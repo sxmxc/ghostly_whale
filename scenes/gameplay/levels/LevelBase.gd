@@ -4,8 +4,10 @@ class_name LevelBase
 export var ragdoll_scene = preload("res://scenes/gameplay/Ragdoll.tscn")
 
 onready var launcher = $Input/VectorCreator
+onready var hud = $HUD
 onready var round_timer = $HUD/HudTimer
 onready var round_end_canvas = $RoundEnd
+onready var input_canvas = $Input
 
 var game_round_time
 
@@ -37,17 +39,26 @@ func _spawn_ragdoll():
 	ragdoll.global_position = position.global_position
 	ragdoll.connect("ragdoll_destroyed", self, "_on_Ragdoll_ragdoll_destroyed")
 	ragdoll.connect("ragdoll_high_impact", self, "_on_Ragdoll_ragdoll_high_impact")
+	ragdoll.connect("hole_in_one", self, "_on_Ragdoll_ragdoll_hole_in_one")
 	launcher.connect("vector_created", ragdoll, "_on_VectorCreator_vector_created")
 	add_child(ragdoll)
 
 func _on_round_end():
+	for child in input_canvas.get_children():
+		child.hide()
 	round_end_canvas._end_round()
+	if Game.level_dictionary.has(Game.current_level + 1):
+		Game.level_dictionary[Game.current_level + 1].locked = false
 
 func _on_Ragdoll_ragdoll_destroyed():
 	Game.player_score += 100
 	_spawn_ragdoll()
 	pass # Replace with function body.
 
+func _on_Ragdoll_ragdoll_hole_in_one():
+	print("Hole in one")
+	hud._show_message("Hole in one!", 3)
+	Game.player_score += 500
 
 func _on_Ragdoll_ragdoll_high_impact():
 	Game.player_score += 10

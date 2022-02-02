@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/gameplay/HudTimer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/HUD.gd" type="Script" id=2]
 [ext_resource path="res://scenes/menu/help_me_large.tres" type="DynamicFont" id=3]
 [ext_resource path="res://scenes/menu/help_me_medium.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scenes/gameplay/HudMessage.gd" type="Script" id=5]
 [ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=6]
 
 [node name="HUD" type="CanvasLayer"]
@@ -78,4 +79,28 @@ text = "00:00"
 
 [node name="Timer" type="Timer" parent="HudTimer"]
 
+[node name="HudMessage" type="CenterContainer" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HudMessage"]
+margin_left = 582.0
+margin_top = 350.0
+margin_right = 697.0
+margin_bottom = 369.0
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Hole in One!"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="HudMessage"]
+
 [connection signal="timeout" from="HudTimer/Timer" to="HudTimer" method="_on_Timer_timeout"]
+[connection signal="timeout" from="HudMessage/Timer" to="HudMessage" method="_on_Timer_timeout"]
