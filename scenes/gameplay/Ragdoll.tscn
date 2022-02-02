@@ -73,6 +73,7 @@ script = ExtResource( 4 )
 position = Vector2( 4, -34 )
 mass = 0.25
 physics_material_override = SubResource( 36 )
+continuous_cd = 1
 contacts_reported = 2
 contact_monitor = true
 
@@ -110,6 +111,7 @@ position = Vector2( -1, 1 )
 collision_mask = 9
 mass = 0.25
 physics_material_override = SubResource( 38 )
+continuous_cd = 1
 contacts_reported = 2
 contact_monitor = true
 
@@ -139,8 +141,6 @@ shape = SubResource( 39 )
 position = Vector2( 1, -1 )
 current = true
 limit_left = 0
-limit_top = 0
-limit_bottom = 720
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 drag_margin_left = 0.5
@@ -175,6 +175,7 @@ shape = SubResource( 40 )
 [node name="Leg" type="RigidBody2D" parent="."]
 position = Vector2( 0, 56 )
 mass = 0.01
+continuous_cd = 1
 contacts_reported = 2
 contact_monitor = true
 

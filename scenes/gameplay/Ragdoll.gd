@@ -7,6 +7,7 @@ extends Node2D
 
 signal ragdoll_destroyed
 signal ragdoll_high_impact
+signal hole_in_one
 
 onready var head_rigid_body = $Head
 onready var body_rigid_body = $Body
@@ -18,6 +19,8 @@ onready var camera = $Body/Camera2D
 export var destroying = false
 
 export var impact_threshold = 50
+
+var impulse_count = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	head_rigid_body.mode = RigidBody2D.MODE_KINEMATIC
@@ -29,6 +32,8 @@ func _ready():
 #	pass
 
 func _destroy():
+	if impulse_count == 1:
+		emit_signal("hole_in_one")
 	destroying = true
 	head_particles.restart()
 	head_particles.set_emitting(true)
@@ -49,6 +54,7 @@ func launch(force: Vector2):
 	head_rigid_body.mode = RigidBody2D.MODE_RIGID
 	body_rigid_body.mode = RigidBody2D.MODE_RIGID
 	body_rigid_body.apply_impulse(Vector2.ZERO, force)
+	impulse_count += 1
 
 func _on_VectorCreator_vector_created(vector):
 	launch(vector)

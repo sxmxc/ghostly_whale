@@ -24,7 +24,7 @@ func start():
 		button.text = Game.level_dictionary[level].display_name
 		button.disabled = Game.level_dictionary[level].locked
 		button_container.add_child(button)
-		button.connect("pressed", self, "_on_LevelButton_pressed", [Game.level_dictionary[level].scene])
+		button.connect("pressed", self, "_on_LevelButton_pressed", [level,Game.level_dictionary[level].scene])
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,7 +32,7 @@ func start():
 #	pass
 
 
-func _on_LevelButton_pressed(level):
+func _on_LevelButton_pressed(level, level_path):
 	var params = {
 		show_progress_bar = true,
 		"round_time" : 90,
@@ -44,4 +44,5 @@ func _on_LevelButton_pressed(level):
 #			"val": 15
 #		},
 	}
-	Game.change_scene(level, params)
+	Game.current_level = level
+	Game.change_scene(level_path, params)

@@ -3,9 +3,17 @@
 		{
 			"extra": "",
 			"id": "1643008110-124",
-			"name": "hyoomies",
+			"name": "hyoomie",
 			"text": "Slang for humans. The first choice when it comes to meat consumption on the planet Loduwn",
 			"title": "Hyoomies",
+			"type": 1
+		},
+		{
+			"extra": "",
+			"id": "1643767829-858",
+			"name": "gyoomie",
+			"text": "Slang for Gomyans. I fine meat delicacy prized on the planet Loduwn. Doesn't pair very well with hyoomie meat. ",
+			"title": "Gyoomies",
 			"type": 1
 		}
 	],

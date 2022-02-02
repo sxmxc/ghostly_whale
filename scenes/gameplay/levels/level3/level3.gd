@@ -11,18 +11,10 @@ func pre_start(params):
 func start():
 	for child in input_canvas.get_children():
 		child.hide()
-	var new_dialog = Dialogic.start('tutorial')
+	var new_dialog = Dialogic.start('level3')
 	add_child(new_dialog)
 	set_process(true)
 	yield(new_dialog,"dialogic_signal")
 	for child in input_canvas.get_children():
 		child.show()
 	.start()
-
-
-#func _process(delta):
-#	elapsed += delta
-#	$Sprite.position.x = Game.size.x / 2 + 150 * sin(2 * 0.4 * PI * elapsed)
-#	$Sprite.position.y = Game.size.y / 2 + 100 * sin(2 * 0.2 *  PI * elapsed)
-
-
