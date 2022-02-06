@@ -12,22 +12,22 @@ onready var main: Main = get_node_or_null("/root/Main")
 
 var player_score = 0
 var bonus_score = 0
-var score_muliplier = 1
+var score_multiplier = 1
 
 var save_dictionary = {}
 var level_dictionary = {
 	1 : {"scene": "res://scenes/gameplay/levels/level1/level1.tscn",
 		"display_name": " Intro ",
 		"locked": false, 
-		"points_needed" : 0},
+		"current_high" : 0},
 	2 : {"scene": "res://scenes/gameplay/levels/level2/level2.tscn",
 		"display_name": " Level 2 ",
 		"locked": false,
-		"points_needed" : 500},
+		"current_high" : 0},
 	3 : {"scene": "res://scenes/gameplay/levels/level3/level3.tscn",
 		"display_name": " Level 3 ",
 		"locked": false,
-		"points_needed" : 1000},
+		"current_high": 0},
 }
 var current_level = 1
 
@@ -36,6 +36,11 @@ func _ready():
 	if main == null:
 		call_deferred("_force_main_scene_load")
 
+
+func _score_reset():
+	player_score = 0
+	bonus_score = 0
+	score_multiplier = 1
 
 func _force_main_scene_load():
 	# Loads scenes/main.tscn and set the currently played
@@ -51,7 +56,10 @@ func _force_main_scene_load():
 	main.active_scene_container.get_child(0).queue_free()
 	main.active_scene_container.add_child(played_scene)
 	if played_scene.has_method("pre_start"):
-		played_scene.pre_start({})
+		var params = {
+		"round_time" : 90,
+	}
+		played_scene.pre_start(params)
 	if played_scene.has_method("start"):
 		played_scene.start()
 	played_scene.owner = main

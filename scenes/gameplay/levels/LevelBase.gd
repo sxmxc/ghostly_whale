@@ -20,6 +20,7 @@ func pre_start(params):
 			var val = params[key]
 			printt("", key, val)
 	game_round_time = params["round_time"]
+	Game._score_reset()
 	set_process(false)
 
 
@@ -30,6 +31,7 @@ func start():
 	print("\nCurrent active scene is: ",
 		active_scene.name, " (", active_scene.filename, ")")
 	set_process(true)
+	_spawn_ragdoll()
 	round_timer.connect("round_over", self, "_on_round_end")
 	round_timer._start_round(game_round_time)
 	
@@ -46,9 +48,13 @@ func _spawn_ragdoll():
 func _on_round_end():
 	for child in input_canvas.get_children():
 		child.hide()
-	round_end_canvas._end_round()
+	round_end_canvas._end_round(Game.player_score, Game.bonus_score, Game.score_multiplier)
+	var total_score = (Game.player_score + Game.bonus_score) * Game.score_multiplier
+	if Game.level_dictionary[Game.current_level].current_high < total_score:
+		Game.level_dictionary[Game.current_level].current_high = total_score
 	if Game.level_dictionary.has(Game.current_level + 1):
 		Game.level_dictionary[Game.current_level + 1].locked = false
+	
 
 func _on_Ragdoll_ragdoll_destroyed():
 	Game.player_score += 100
@@ -58,7 +64,7 @@ func _on_Ragdoll_ragdoll_destroyed():
 func _on_Ragdoll_ragdoll_hole_in_one():
 	print("Hole in one")
 	hud._show_message("Hole in one!", 3)
-	Game.player_score += 500
+	Game.bonus_score += 500
 
 func _on_Ragdoll_ragdoll_high_impact():
 	Game.player_score += 10

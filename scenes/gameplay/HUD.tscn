@@ -22,11 +22,11 @@ __meta__ = {
 }
 
 [node name="VBox" type="VBoxContainer" parent="Margin"]
-margin_right = 269.0
+margin_right = 273.0
 margin_bottom = 145.0
 
 [node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
-margin_right = 269.0
+margin_right = 273.0
 margin_bottom = 37.0
 
 [node name="Label" type="Label" parent="Margin/VBox/HBox"]
@@ -42,8 +42,70 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="Margin/VBox/HBox"]
-margin_left = 252.0
-margin_right = 269.0
+margin_left = 256.0
+margin_right = 273.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox2" type="HBoxContainer" parent="Margin/VBox"]
+margin_top = 45.0
+margin_right = 273.0
+margin_bottom = 82.0
+
+[node name="Label" type="Label" parent="Margin/VBox/HBox2"]
+margin_right = 246.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Bonus Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Margin/VBox/HBox2"]
+margin_left = 254.0
+margin_right = 271.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox3" type="HBoxContainer" parent="Margin/VBox"]
+margin_top = 90.0
+margin_right = 273.0
+margin_bottom = 127.0
+
+[node name="Label" type="Label" parent="Margin/VBox/HBox3"]
+margin_right = 221.0
+margin_bottom = 37.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+custom_constants/shadow_offset_y = 2
+custom_fonts/font = ExtResource( 4 )
+text = "Multiplier x"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Margin/VBox/HBox3"]
+margin_left = 229.0
+margin_right = 246.0
 margin_bottom = 37.0
 custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )

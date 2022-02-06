@@ -19,12 +19,12 @@ func _ready():
 	pass # Replace with function body.
 
 
-func _end_round():
-	base_score_label.text = str(Game.player_score)
-	bonus_score_label.text = str(Game.bonus_score)
-	multip_score_label.text = "x%d" % Game.score_muliplier
-	total_score_label.text = str((Game.player_score + Game.bonus_score) * Game.score_muliplier)
+func _end_round(base, bonus, mult):
 	get_tree().paused = true
+	base_score_label.text = str(base)
+	bonus_score_label.text = str(bonus)
+	multip_score_label.text = "x%d" % mult
+	total_score_label.text = str((base + bonus) * mult)
 	panel.visible = true
 	
 

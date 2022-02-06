@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/sprites/Body parts/head.png" type="Texture" id=1]
 [ext_resource path="res://assets/sprites/Body parts/torso.png" type="Texture" id=2]
@@ -10,44 +10,6 @@
 [sub_resource type="PhysicsMaterial" id=36]
 friction = 0.2
 bounce = 0.71
-
-[sub_resource type="Curve" id=43]
-max_value = 100.0
-_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 1, 100 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=44]
-curve = SubResource( 43 )
-
-[sub_resource type="Curve" id=45]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.452273 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=46]
-curve = SubResource( 45 )
-
-[sub_resource type="ParticlesMaterial" id=42]
-lifetime_randomness = 1.0
-trail_divisor = 2
-emission_shape = 5
-emission_ring_radius = 1.99
-emission_ring_inner_radius = 19.61
-emission_ring_height = 1.0
-emission_ring_axis = Vector3( 0, 0, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, 20, 0 )
-angular_velocity = 28.24
-angular_velocity_random = 0.06
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-linear_accel = 100.0
-radial_accel = 40.0
-radial_accel_random = 0.67
-damping = 2.94
-damping_random = 0.04
-damping_curve = SubResource( 44 )
-scale = 1.5
-scale_random = 1.0
-scale_curve = SubResource( 46 )
-color = Color( 0.541176, 0, 0, 1 )
 
 [sub_resource type="CircleShape2D" id=37]
 radius = 15.0333
@@ -73,22 +35,9 @@ script = ExtResource( 4 )
 position = Vector2( 4, -34 )
 mass = 0.25
 physics_material_override = SubResource( 36 )
-continuous_cd = 1
+continuous_cd = 2
 contacts_reported = 2
 contact_monitor = true
-
-[node name="Particles2D" type="Particles2D" parent="Head"]
-z_index = 2
-emitting = false
-amount = 5000
-lifetime = 2.0
-one_shot = true
-speed_scale = 2.76
-explosiveness = 1.0
-randomness = 1.0
-visibility_rect = Rect2( -27.0876, -22.4753, 57.8728, 52.6469 )
-local_coords = false
-process_material = SubResource( 42 )
 
 [node name="Sprite" type="Sprite" parent="Head"]
 scale = Vector2( 0.0471199, 0.0443425 )
@@ -111,23 +60,9 @@ position = Vector2( -1, 1 )
 collision_mask = 9
 mass = 0.25
 physics_material_override = SubResource( 38 )
-continuous_cd = 1
+continuous_cd = 2
 contacts_reported = 2
 contact_monitor = true
-
-[node name="Particles2D" type="Particles2D" parent="Body"]
-position = Vector2( 0, 1 )
-z_index = 2
-emitting = false
-amount = 1500
-lifetime = 2.0
-one_shot = true
-speed_scale = 2.76
-explosiveness = 1.0
-randomness = 1.0
-visibility_rect = Rect2( -27.0876, -22.4753, 57.8728, 52.6469 )
-local_coords = false
-process_material = SubResource( 42 )
 
 [node name="Sprite" type="Sprite" parent="Body"]
 scale = Vector2( 0.065, 0.105 )
@@ -173,9 +108,9 @@ position = Vector2( -5, -21 )
 shape = SubResource( 40 )
 
 [node name="Leg" type="RigidBody2D" parent="."]
-position = Vector2( 0, 56 )
+position = Vector2( 0, 57 )
 mass = 0.01
-continuous_cd = 1
+continuous_cd = 2
 contacts_reported = 2
 contact_monitor = true
 
