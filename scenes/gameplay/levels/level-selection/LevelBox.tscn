@@ -1,0 +1,19 @@
+[gd_scene format=2]
+
+[node name="LevelBox" type="VBoxContainer"]
+margin_right = 159.0
+margin_bottom = 64.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_right = 164.0
+margin_bottom = 37.0
+text = " Level 1 "
+
+[node name="Label" type="Label" parent="."]
+margin_top = 45.0
+margin_right = 164.0
+margin_bottom = 70.0
+text = "Current High: 0"

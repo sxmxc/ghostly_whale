@@ -40,7 +40,7 @@ custom_fonts/font = ExtResource( 3 )
 text = "Level Selection"
 
 [node name="CenterContainer2" type="CenterContainer" parent="."]
-margin_top = 1.0
+margin_top = 196.0
 margin_right = 1281.0
 margin_bottom = 718.0
 __meta__ = {
@@ -49,9 +49,9 @@ __meta__ = {
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer2"]
 margin_left = 640.0
-margin_top = 358.0
+margin_top = 261.0
 margin_right = 640.0
-margin_bottom = 358.0
+margin_bottom = 261.0
 theme = ExtResource( 2 )
 custom_constants/vseparation = 3
 custom_constants/hseparation = 20
@@ -59,3 +59,16 @@ columns = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="."]
+margin_left = 29.0
+margin_top = 652.0
+margin_right = 116.0
+margin_bottom = 689.0
+theme = ExtResource( 2 )
+text = " Back "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

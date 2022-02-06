@@ -11,8 +11,7 @@ signal hole_in_one
 
 onready var head_rigid_body = $Head
 onready var body_rigid_body = $Body
-onready var head_particles = $Head/Particles2D
-onready var body_particles = $Body/Particles2D
+onready var blood_splatter = preload("res://scenes/gameplay/BloodSplatter.tscn")
 onready var timer = $Timer
 onready var camera = $Body/Camera2D
 
@@ -35,10 +34,6 @@ func _destroy():
 	if impulse_count == 1:
 		emit_signal("hole_in_one")
 	destroying = true
-	head_particles.restart()
-	head_particles.set_emitting(true)
-	body_particles.restart()
-	body_particles.set_emitting(true)
 	head_rigid_body.sleeping = true
 	body_rigid_body.sleeping = true
 	self.visible = false
@@ -63,8 +58,10 @@ func _on_VectorCreator_vector_created(vector):
 func _on_Head_body_entered(body):
 	if body is TileMap:
 		if head_rigid_body.linear_velocity.x > impact_threshold || head_rigid_body.linear_velocity.y > impact_threshold:
-			head_particles.restart()
-			head_particles.set_emitting(true)
+			var splatter = blood_splatter.instance()
+			Game.get_active_scene().add_child(splatter)
+			splatter.global_position = head_rigid_body.global_position
+			splatter.rotation = global_position.angle_to_point(body.global_position)
 			emit_signal("ragdoll_high_impact")
 	pass # Replace with function body.
 
@@ -72,7 +69,10 @@ func _on_Head_body_entered(body):
 func _on_Body_body_entered(body):
 	if body is TileMap:
 		if body_rigid_body.linear_velocity.x > impact_threshold || body_rigid_body.linear_velocity.y > impact_threshold:
-			body_particles.restart()
-			body_particles.set_emitting(true)
+#			var splatter = blood_splatter.instance()
+#			Game.get_active_scene().add_child(splatter)
+#			splatter.position = position
+#			splatter.rotation = position.angle_to_point(body.global_position)
+#			splatter.emitting = true
 			emit_signal("ragdoll_high_impact")
 	pass # Replace with function body.
