@@ -34,5 +34,4 @@ func _start_round(rt = 90):
 func _on_Timer_timeout():
 	emit_signal("round_over")
 	print("Round Timer Timeout")
-	emit_signal("round_over")
 	pass # Replace with function body.

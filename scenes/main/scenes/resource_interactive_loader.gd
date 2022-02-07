@@ -52,5 +52,7 @@ func _update_progress():
 
 
 func _on_background_loading_completed(resource):
+	Game.main.network_client.data_container._load_leader_boards()
+	yield(Game.main.network_client.data_container,"data_loaded")
 	emit_signal("resource_loaded", resource)
 	_loader = null
