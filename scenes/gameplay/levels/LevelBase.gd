@@ -48,6 +48,7 @@ func _spawn_ragdoll():
 func _on_round_end():
 	for child in input_canvas.get_children():
 		child.hide()
+	Game._submit_score()
 	round_end_canvas._end_round(Game.player_score, Game.bonus_score, Game.score_multiplier)
 	var total_score = (Game.player_score + Game.bonus_score) * Game.score_multiplier
 	if Game.level_dictionary[Game.current_level].current_high < total_score:
