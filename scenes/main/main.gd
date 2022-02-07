@@ -21,6 +21,8 @@ var scenes: Scenes
 
 onready var transitions: Transition = $Transitions
 onready var active_scene_container = $ActiveSceneContainer
+onready var network_client = $NetworkClient
+
 
 
 func _enter_tree() -> void:
@@ -98,4 +100,7 @@ func _input(_event: InputEvent):
 
 # Unpause the game when the transition finishes.
 func _on_Scenes_change_finished():
+
 	get_tree().paused = false
+
+

@@ -116,6 +116,7 @@ func _on_change_started(new_scene, params):
 
 
 func _on_resource_loaded(resource):
+	
 	if main.transitions.is_transition_in_playing():
 		yield(transitions.anim, "animation_finished")
 	var load_time = OS.get_ticks_msec() - _loading_start_time # ms
@@ -124,6 +125,6 @@ func _on_resource_loaded(resource):
 		'elapsed': load_time
 	}))
 	# artificially wait some time in order to have a gentle scene transition
-	if load_time < MINIMUM_TRANSITION_DURATION:
-		yield(get_tree().create_timer((MINIMUM_TRANSITION_DURATION - load_time) / 1000.0), "timeout")
+#	if load_time < MINIMUM_TRANSITION_DURATION:
+#		yield(get_tree().create_timer((MINIMUM_TRANSITION_DURATION - load_time) / 1000.0), "timeout")
 	_set_new_scene(resource)

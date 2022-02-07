@@ -12,8 +12,14 @@ margin_right = 164.0
 margin_bottom = 37.0
 text = " Level 1 "
 
-[node name="Label" type="Label" parent="."]
+[node name="local_best" type="Label" parent="."]
 margin_top = 45.0
 margin_right = 164.0
 margin_bottom = 70.0
+text = "Current High: 0"
+
+[node name="global_best" type="Label" parent="."]
+margin_top = 78.0
+margin_right = 164.0
+margin_bottom = 103.0
 text = "Current High: 0"

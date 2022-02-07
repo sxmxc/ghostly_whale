@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/main/transition/transition.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/menu/menu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/main/main.gd" type="Script" id=3]
+[ext_resource path="res://scenes/main/NetworkClient.gd" type="Script" id=4]
+[ext_resource path="res://scenes/main/DataContainer.gd" type="Script" id=5]
 
 [node name="Main" type="Node"]
 pause_mode = 2
@@ -14,10 +16,15 @@ __meta__ = {
 [node name="Transitions" parent="." instance=ExtResource( 1 )]
 layer = 128
 
-[node name="Transitions2" parent="." instance=ExtResource( 1 )]
-layer = 128
-
 [node name="ActiveSceneContainer" type="Node" parent="."]
 pause_mode = 1
 
 [node name="Menu" parent="ActiveSceneContainer" instance=ExtResource( 2 )]
+
+[node name="NetworkClient" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="DataContainer" type="Node2D" parent="NetworkClient"]
+script = ExtResource( 5 )
+
+[connection signal="data_loaded" from="NetworkClient" to="." method="_on_Networkclient_data_loaded"]
