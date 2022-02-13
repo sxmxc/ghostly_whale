@@ -17,7 +17,7 @@ signal done
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var scheme = "http"
+	var scheme = "https"
 	var host = "ghostly_cloud.voidmoose.com"
 	var port = 7350
 	var server_key = "defaultkey"
