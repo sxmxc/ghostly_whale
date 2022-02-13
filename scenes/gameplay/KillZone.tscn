@@ -256,4 +256,9 @@ texture = ExtResource( 3 )
 position = Vector2( 22, -37 )
 texture = ExtResource( 4 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Machine"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Machine/StaticBody2D"]
+polygon = PoolVector2Array( -161, -1, -160, -66, -102, -66, -102, 36, 50, 36, 51, -70, 115, -70, 116, -5, 57, -3, 57, 39, -11, 41, -10, 64, 164, 64, 169, 71, 164, 75, -105, 78, -107, -1 )
+
 [connection signal="body_entered" from="." to="." method="_on_KillZone_body_entered"]

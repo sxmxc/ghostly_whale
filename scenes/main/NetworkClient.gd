@@ -12,6 +12,8 @@ onready var data_container = $DataContainer
 var current_user = "None"
 
 signal data_loaded
+signal high_score
+signal done
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,24 +53,28 @@ func _submit_score(board, score):
 		print("An error occured: %s" % record)
 	else:
 		print("New level record username %s and score %s" % [record.username, record.score])
+		emit_signal("high_score")
 	
 	var daily : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board + "_daily", score), "completed")
 	if daily.is_exception():
 		print("An error occured: %s" % daily)
 	else:
 		print("New daily record username %s and score %s" % [daily.username, daily.score])
+		emit_signal("high_score")
 	
 	var monthly : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board + "_monthly", score), "completed")
 	if monthly.is_exception():
 		print("An error occured: %s" % monthly)
 	else:
 		print("New monthly record username %s and score %s" % [monthly.username, monthly.score])
+		emit_signal("high_score")
 	
 	var yearly : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board +"_yearly", score), "completed")
 	if yearly.is_exception():
 		print("An error occured: %s" % yearly)
 	else:
 		print("New yearly record username %s and score %s" % [yearly.username, yearly.score])
+		emit_signal("high_score")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

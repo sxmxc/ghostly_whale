@@ -33,7 +33,7 @@ func _surge():
 	flicker_tween.start()
 	timer.start(rando)
 
-func _on_sway_tween_completed(object, key):
+func _on_sway_tween_completed(_object, key):
 	sway_values.invert()
 	_start_sway()
 

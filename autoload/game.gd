@@ -10,9 +10,16 @@ var size: Vector2 setget , get_size
 
 onready var main: Main = get_node_or_null("/root/Main")
 
+signal new_high_score
+signal score_submitted
+
+var quality = 100
+
 var player_score = 0
 var bonus_score = 0
 var score_multiplier = 1
+var high_score_achieved = false
+
 
 var network_connected = false
 
@@ -42,17 +49,21 @@ signal client_data_loaded
 func _ready():
 	if main == null:
 		call_deferred("_force_main_scene_load")
-		
+
 
 
 func _score_reset():
 	player_score = 0
 	bonus_score = 0
 	score_multiplier = 1
+	high_score_achieved = false
 
 func _submit_score():
 	main.network_client._submit_score(level_dictionary[current_level].leaderboard_id, (player_score + bonus_score) * score_multiplier)
-
+	
+func _on_high_score():
+	emit_signal("new_high_score")
+	
 func _network_data_load():
 	if network_connected:
 		pass
@@ -74,7 +85,7 @@ func _force_main_scene_load():
 	main.active_scene_container.add_child(played_scene)
 	if played_scene.has_method("pre_start"):
 		var params = {
-		"round_time" : 90,
+		fetch_data = false,
 	}
 		played_scene.pre_start(params)
 	if played_scene.has_method("start"):

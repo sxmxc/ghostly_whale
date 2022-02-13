@@ -34,69 +34,68 @@ __meta__ = {
 }
 
 [node name="DailyContainer" type="VBoxContainer" parent="Margin/Hbox"]
-visible = false
-margin_right = 1264.0
+margin_right = 416.0
 margin_bottom = 651.0
 size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="Margin/Hbox/DailyContainer"]
-margin_right = 1264.0
+margin_right = 416.0
 margin_bottom = 25.0
 
 [node name="Label" type="Label" parent="Margin/Hbox/DailyContainer/CenterContainer"]
-margin_left = 605.0
-margin_right = 658.0
+margin_left = 181.0
+margin_right = 234.0
 margin_bottom = 25.0
 text = "Daily"
 
 [node name="values" type="VBoxContainer" parent="Margin/Hbox/DailyContainer"]
 margin_top = 33.0
-margin_right = 1264.0
+margin_right = 416.0
 margin_bottom = 33.0
 
 [node name="center" type="CenterContainer" parent="Margin/Hbox/DailyContainer/values"]
-margin_right = 1264.0
+margin_right = 416.0
 
 [node name="WeeklyContainer" type="VBoxContainer" parent="Margin/Hbox"]
-margin_right = 1264.0
+margin_left = 424.0
+margin_right = 840.0
 margin_bottom = 651.0
 size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="Margin/Hbox/WeeklyContainer"]
-margin_right = 1264.0
+margin_right = 416.0
 margin_bottom = 25.0
 
 [node name="Label" type="Label" parent="Margin/Hbox/WeeklyContainer/CenterContainer"]
-margin_left = 593.0
-margin_right = 670.0
+margin_left = 169.0
+margin_right = 246.0
 margin_bottom = 25.0
 text = "Weekly"
 
 [node name="values" type="VBoxContainer" parent="Margin/Hbox/WeeklyContainer"]
 margin_top = 33.0
-margin_right = 1264.0
+margin_right = 416.0
 margin_bottom = 33.0
 
 [node name="MonthlyContainer" type="VBoxContainer" parent="Margin/Hbox"]
-visible = false
-margin_left = 318.0
-margin_right = 628.0
+margin_left = 848.0
+margin_right = 1264.0
 margin_bottom = 651.0
 size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="Margin/Hbox/MonthlyContainer"]
-margin_right = 310.0
+margin_right = 416.0
 margin_bottom = 25.0
 
 [node name="Label" type="Label" parent="Margin/Hbox/MonthlyContainer/CenterContainer"]
-margin_left = 110.0
-margin_right = 199.0
+margin_left = 163.0
+margin_right = 252.0
 margin_bottom = 25.0
 text = "Monthly"
 
 [node name="values" type="VBoxContainer" parent="Margin/Hbox/MonthlyContainer"]
 margin_top = 33.0
-margin_right = 310.0
+margin_right = 416.0
 margin_bottom = 33.0
 
 [node name="YearlyContainer" type="VBoxContainer" parent="Margin/Hbox"]

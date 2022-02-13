@@ -54,5 +54,6 @@ func _on_Restart_pressed():
 
 func _on_Level_Selection_pressed():
 	Game.change_scene("res://scenes/gameplay/levels/level-selection/levelSelection.tscn", {
-		'show_progress_bar': true
+		'show_progress_bar': true,
+		fetch_data = true
 	})

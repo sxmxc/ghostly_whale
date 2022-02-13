@@ -27,4 +27,4 @@ script = ExtResource( 4 )
 [node name="DataContainer" type="Node2D" parent="NetworkClient"]
 script = ExtResource( 5 )
 
-[connection signal="data_loaded" from="NetworkClient" to="." method="_on_Networkclient_data_loaded"]
+[connection signal="high_score" from="NetworkClient" to="." method="_on_NetworkClient_high_score"]
