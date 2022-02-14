@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/menu/help_me_large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/menu/play-button.gd" type="Script" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/bolt-icon-button-red.png" type="Texture" id=10]
 [ext_resource path="res://scenes/menu/NetworkStatus.gd" type="Script" id=11]
 [ext_resource path="res://scenes/menu/LeaderBoardButton.gd" type="Script" id=12]
+[ext_resource path="res://scenes/menu/menu.gd" type="Script" id=13]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -86,6 +87,7 @@ color = Color( 0.721569, 0, 0, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 4 )
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
@@ -101,12 +103,14 @@ __meta__ = {
 }
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.254902, 0.254902, 0.254902, 1 )
+z_index = 4
+color = Color( 0.243137, 0.243137, 0.243137, 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 640, -145 )
+position = Vector2( 769.315, -534.368 )
 rotation = 0.663225
-scale = Vector2( 1.14746, 3.58472 )
+scale = Vector2( 6.05596, 6.22599 )
+z_index = 4
 texture = ExtResource( 5 )
 offset = Vector2( 0, 200 )
 texture_scale = 0.5

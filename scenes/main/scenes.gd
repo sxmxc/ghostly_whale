@@ -91,7 +91,7 @@ func change_scene_multithread(new_scene: String, params = {}):
 		[],
 		CONNECT_ONESHOT
 	)
-	_loader_mt.load_scene(new_scene)
+	_loader_mt.load_scene(new_scene, _params.fetch_data)
 
 
 # Single thread interactive loading
@@ -108,7 +108,7 @@ func change_scene_background_loading(new_scene: String, params = {}):
 	_loading_start_time = OS.get_ticks_msec()
 	_transition_appear(params)
 	yield(transitions.anim, "animation_finished")
-	_loader_ri.load_scene(new_scene)
+	_loader_ri.load_scene(new_scene, _params.fetch_data)
 
 
 func _on_change_started(new_scene, params):

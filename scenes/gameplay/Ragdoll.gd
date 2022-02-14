@@ -8,6 +8,7 @@ extends Node2D
 signal ragdoll_destroyed
 signal ragdoll_high_impact
 signal hole_in_one
+signal perfect
 
 onready var head_rigid_body = $Head
 onready var body_rigid_body = $Body
@@ -33,12 +34,17 @@ func _ready():
 func _destroy():
 	if impulse_count == 1:
 		emit_signal("hole_in_one")
+		if Game.quality == 100:
+			emit_signal("perfect")
 	destroying = true
 	head_rigid_body.sleeping = true
 	body_rigid_body.sleeping = true
 	self.visible = false
 	timer.start()
 	camera.shake(2,15,8)
+	var score = Game.quality
+	Game.player_score += score
+	get_parent().hud._show_message("+%d" % score, 3, get_parent().hud.score_anchor.global_position)
 	yield(timer,"timeout")
 	self.call_deferred("queue_free")
 	emit_signal("ragdoll_destroyed")
@@ -54,9 +60,14 @@ func launch(force: Vector2):
 func _on_VectorCreator_vector_created(vector):
 	launch(vector)
 
+func _on_time_slowed():
+	camera._blur(.01, Vector2(.5,.5))
 
+func _on_time_normal():
+	camera._blur(0)
+	
 func _on_Head_body_entered(body):
-	if body is TileMap:
+	if body in get_tree().get_nodes_in_group("obstacles"):
 		if head_rigid_body.linear_velocity.x > impact_threshold || head_rigid_body.linear_velocity.y > impact_threshold:
 			var splatter = blood_splatter.instance()
 			Game.get_active_scene().add_child(splatter)
@@ -67,12 +78,4 @@ func _on_Head_body_entered(body):
 
 
 func _on_Body_body_entered(body):
-	if body is TileMap:
-		if body_rigid_body.linear_velocity.x > impact_threshold || body_rigid_body.linear_velocity.y > impact_threshold:
-#			var splatter = blood_splatter.instance()
-#			Game.get_active_scene().add_child(splatter)
-#			splatter.position = position
-#			splatter.rotation = position.angle_to_point(body.global_position)
-#			splatter.emitting = true
-			emit_signal("ragdoll_high_impact")
 	pass # Replace with function body.

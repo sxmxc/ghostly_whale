@@ -2,6 +2,7 @@ extends Node
 class_name LevelBase
 
 export var ragdoll_scene = preload("res://scenes/gameplay/Ragdoll.tscn")
+export var game_round_time = 90
 
 onready var launcher = $Input/VectorCreator
 onready var hud = $HUD
@@ -9,7 +10,7 @@ onready var round_timer = $HUD/HudTimer
 onready var round_end_canvas = $RoundEnd
 onready var input_canvas = $Input
 
-var game_round_time
+
 
 # `pre_start()` is called when a scene is loaded.
 # Use this function to receive params from `Game.change_scene(params)`.
@@ -19,7 +20,6 @@ func pre_start(params):
 		for key in params:
 			var val = params[key]
 			printt("", key, val)
-	game_round_time = params["round_time"]
 	Game._score_reset()
 	set_process(false)
 
@@ -34,15 +34,20 @@ func start():
 	_spawn_ragdoll()
 	round_timer.connect("round_over", self, "_on_round_end")
 	round_timer._start_round(game_round_time)
+	Game.connect("new_high_score", self, "_on_high_score")
 	
 func _spawn_ragdoll():
+	Game.quality = 100
 	var position = get_tree().get_nodes_in_group("spawn_point")[0]
 	var ragdoll = ragdoll_scene.instance()
 	ragdoll.global_position = position.global_position
 	ragdoll.connect("ragdoll_destroyed", self, "_on_Ragdoll_ragdoll_destroyed")
 	ragdoll.connect("ragdoll_high_impact", self, "_on_Ragdoll_ragdoll_high_impact")
 	ragdoll.connect("hole_in_one", self, "_on_Ragdoll_ragdoll_hole_in_one")
+	ragdoll.connect("perfect", self, "_on_Ragdoll_ragdoll_perfect")
 	launcher.connect("vector_created", ragdoll, "_on_VectorCreator_vector_created")
+	launcher.connect("time_slowed", ragdoll,"_on_time_slowed")
+	launcher.connect("time_normal", ragdoll,"_on_time_normal")
 	add_child(ragdoll)
 
 func _on_round_end():
@@ -58,15 +63,28 @@ func _on_round_end():
 	
 
 func _on_Ragdoll_ragdoll_destroyed():
-	Game.player_score += 100
+	
 	_spawn_ragdoll()
 	pass # Replace with function body.
 
 func _on_Ragdoll_ragdoll_hole_in_one():
 	print("Hole in one")
-	hud._show_message("Hole in one!", 3)
+	hud._show_message("Hole in one!", 3, hud.hud_message.anchor.global_position)
+	hud._show_message("+500", 3, hud.bonus_anchor.global_position)
 	Game.bonus_score += 500
 
+func _on_Ragdoll_ragdoll_perfect():
+	print("Perfect")
+	hud._show_message("High Quality Meat!", 3, hud.hud_message.anchor.global_position + Vector2(0,20))
+	hud._show_message("+1", 3, hud.mult_anchor.global_position)
+	Game.score_multiplier += 1
+
 func _on_Ragdoll_ragdoll_high_impact():
-	Game.player_score += 10
+	Game.quality -= 10
+	if Game.quality <= 0:
+		Game.quality = 0
+	hud._show_message("-10", 3, hud.quality_anchor.global_position)
 	pass # Replace with function body.
+
+func _on_high_score():
+	hud._show_message("New High Score!", 3)

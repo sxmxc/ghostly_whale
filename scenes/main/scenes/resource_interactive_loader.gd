@@ -9,11 +9,14 @@ var _stages_amount
 var _elapsed = 0
 const LOAD_STEP_DELAY = 2 # `_process` calls.
 
+var load_network_data = false
+
 func _ready() -> void:
 	set_process(false)
 
 
-func load_scene(p):
+func load_scene(p, fetch_data := false):
+	load_network_data = fetch_data
 	_path = p
 	_loader = ResourceLoader.load_interactive(_path)
 	_stages_amount = float(_loader.get_stage_count())
@@ -52,7 +55,8 @@ func _update_progress():
 
 
 func _on_background_loading_completed(resource):
-	Game.main.network_client.data_container._load_leader_boards()
-	yield(Game.main.network_client.data_container,"data_loaded")
+	if load_network_data:
+		Game.main.network_client.data_container._load_leader_boards()
+		yield(Game.main.network_client.data_container,"data_loaded")
 	emit_signal("resource_loaded", resource)
 	_loader = null

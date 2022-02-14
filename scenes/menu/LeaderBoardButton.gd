@@ -19,6 +19,7 @@ func _process(delta):
 func _on_LeaderBoardButton_pressed():
 	var params = {
 		show_progress_bar = true,
+		fetch_data = true
 #		"round_time" : 90,
 #		"a_number": 10,
 #		"a_string": "Ciao mamma!",

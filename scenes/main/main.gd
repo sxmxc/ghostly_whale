@@ -25,6 +25,8 @@ onready var network_client = $NetworkClient
 
 
 
+
+
 func _enter_tree() -> void:
 	_register_size()
 	get_tree().connect("screen_resized", self, "_on_screen_resized")
@@ -104,3 +106,8 @@ func _on_Scenes_change_finished():
 	get_tree().paused = false
 
 
+
+
+func _on_NetworkClient_high_score():
+	if Game.high_score_achieved == false:
+		Game.high_score_achieved = true

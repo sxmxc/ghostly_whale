@@ -8,12 +8,14 @@ const SIMULATED_DELAY_MS = 32 # ms
 var thread: Thread = null
 var stages_amount: int
 
+var load_network_data = false
 
 func _ready() -> void:
 	thread = Thread.new()
 
 
-func load_scene(path):
+func load_scene(path, fetch_data := false):
+	load_network_data = fetch_data
 	var state = thread.start(self, "_thread_load", path)
 	if state != OK:
 		print("Error while starting thread: " + str(state))
@@ -39,8 +41,9 @@ func _thread_load(path):
 
 func _thread_done(resource):
 	assert(resource)
-	Game.main.network_client.data_container._load_leader_boards()
-	yield(Game.main.network_client.data_container,"data_loaded")
+	if load_network_data:
+		Game.main.network_client.data_container._load_leader_boards()
+		yield(Game.main.network_client.data_container,"data_loaded")
 	# Always wait for threads to finish, this is required on Windows.
 	thread.wait_to_finish()
 	emit_signal("resource_stage_loaded", stages_amount, stages_amount)
