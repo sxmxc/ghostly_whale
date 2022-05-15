@@ -1,6 +1,6 @@
 extends Control
 
-onready var tab_container = $Margin/VBoxContainer/TabContainer
+onready var tab_container = $Margin/TabContainer
 
 var board_panel = preload("res://scenes/menu/LeaderBoardPanel.tscn")
 

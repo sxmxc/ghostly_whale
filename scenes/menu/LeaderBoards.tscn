@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=1]
 [ext_resource path="res://scenes/menu/LeaderBoards.gd" type="Script" id=2]
+[ext_resource path="res://assets/Final/Background_0.png" type="Texture" id=3]
 
 [node name="LeaderBoards" type="Control"]
 anchor_right = 1.0
@@ -9,42 +10,47 @@ anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Margin" type="MarginContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Margin"]
-margin_right = 1280.0
-margin_bottom = 720.0
-
-[node name="TabContainer" type="TabContainer" parent="Margin/VBoxContainer"]
-margin_right = 1280.0
-margin_bottom = 512.0
+[node name="TabContainer" type="TabContainer" parent="Margin"]
+modulate = Color( 1, 1, 1, 0.87451 )
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1260.0
+margin_bottom = 700.0
+mouse_filter = 1
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="Margin/VBoxContainer"]
-margin_top = 520.0
-margin_right = 1280.0
-margin_bottom = 720.0
-rect_min_size = Vector2( 0, 200 )
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Margin/VBoxContainer/CenterContainer"]
-margin_left = 581.0
-margin_top = 81.0
-margin_right = 699.0
-margin_bottom = 118.0
-
-[node name="Button" type="Button" parent="Margin/VBoxContainer/CenterContainer/HBoxContainer"]
-margin_right = 118.0
-margin_bottom = 37.0
+[node name="Button" type="Button" parent="Margin"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 138.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 118, 37 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
 text = " Back "
 
-[connection signal="pressed" from="Margin/VBoxContainer/CenterContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1276.0
+margin_bottom = 724.0
+texture = ExtResource( 3 )
+expand = true
+
+[connection signal="pressed" from="Margin/Button" to="." method="_on_Button_pressed"]

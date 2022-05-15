@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Proto/level1_boarders_proto.png" type="Texture" id=1]
 [ext_resource path="res://scenes/gameplay/pause-layer/pause-layer.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/gameplay/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/gameplay/RoundEnd.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/gameplay/VectorCreator.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Icons/up-arrow.png" type="Texture" id=8]
 [ext_resource path="res://assets/Final/Background_0.png" type="Texture" id=9]
 [ext_resource path="res://assets/Final/Background_1.png" type="Texture" id=10]
 [ext_resource path="res://scenes/gameplay/levels/level1/level1.gd" type="Script" id=11]
@@ -102,3 +103,8 @@ polygon = PoolVector2Array( 638, -360, -636, -361, -590, -330, 591, -333 )
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Borders"]
 polygon = PoolVector2Array( 637, -362, 638, 360, 587, 329, 587, -333 )
+
+[node name="Up-arrow" type="Sprite" parent="Borders"]
+position = Vector2( -16, -43 )
+rotation = 1.309
+texture = ExtResource( 8 )

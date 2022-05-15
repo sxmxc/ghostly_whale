@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Final/Background_0.png" type="Texture" id=1]
 [ext_resource path="res://assets/Final/Background_1.png" type="Texture" id=2]
 [ext_resource path="res://assets/Proto/level2_boarders_proto.png" type="Texture" id=3]
 [ext_resource path="res://scenes/gameplay/levels/level2/level2.gd" type="Script" id=4]
+[ext_resource path="res://assets/Icons/up-arrow.png" type="Texture" id=5]
 [ext_resource path="res://scenes/gameplay/KillZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/gameplay/VectorCreator.tscn" type="PackedScene" id=7]
 [ext_resource path="res://input/touchJoyPad.tscn" type="PackedScene" id=8]
@@ -107,3 +108,13 @@ polygon = PoolVector2Array( 107, 36.9714, 2459, 37.5304, 2559, 27.4679, 2561, -8
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Boarders"]
 polygon = PoolVector2Array( 2455, 684, 2463, 34, 2561, 2, 2561, 716 )
+
+[node name="Up-arrow" type="Sprite" parent="Boarders"]
+position = Vector2( 1628, 233 )
+rotation = 1.6778
+texture = ExtResource( 5 )
+
+[node name="Up-arrow2" type="Sprite" parent="Boarders"]
+position = Vector2( 864, 309 )
+rotation = 1.26746
+texture = ExtResource( 5 )
