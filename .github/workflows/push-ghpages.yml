@@ -5,7 +5,7 @@ on:
     branches:
       - dev
 env:
-  GODOT_VERSION: 3.4.3
+  GODOT_VERSION: 3.4.4
   EXPORT_NAME: ghostly_whale
 
 jobs:
