@@ -11,18 +11,18 @@ env:
 jobs:
   export-web:
     if: true
-    name: Web Export
+    name: Web Export 🌐
     runs-on: ubuntu-latest
     container:
       image: barichello/godot-ci:3.4.4
     steps:
-      - name: Checkout
+      - name: Checkout ☑️
         uses: actions/checkout@v1
-      - name: Setup
+      - name: Setup ⚙️
         run: |
           mkdir -v -p ~/.local/share/godot/templates
           mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
-      - name: Web build
+      - name: Web build 🔨
         run: |
           mkdir -v -p build/web
           godot -v --export "HTML5" ./build/web/index.html
