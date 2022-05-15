@@ -183,6 +183,7 @@ rect_min_size = Vector2( 200, 70 )
 focus_neighbour_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
 text = "Start"
+expand_icon = true
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
