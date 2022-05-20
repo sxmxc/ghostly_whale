@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=15 format=2]
+[gd_resource type="Theme" load_steps=20 format=2]
 
 [ext_resource path="res://scenes/menu/help_me.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/menu/help_me_medium.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/sprites/ui_concrete.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprites/TRAPS.png" type="Texture" id=4]
+[ext_resource path="res://assets/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal023.png" type="Texture" id=4]
+[ext_resource path="res://assets/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal024.png" type="Texture" id=5]
+[ext_resource path="res://assets/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal012.png" type="Texture" id=6]
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
@@ -39,17 +41,45 @@ content_margin_right = 20.0
 content_margin_top = 20.0
 content_margin_bottom = 20.0
 texture = ExtResource( 4 )
-region_rect = Rect2( 105, 33, 866, 868 )
-margin_left = 127.017
-margin_right = 119.319
-margin_top = 138.564
-margin_bottom = 138.564
+region_rect = Rect2( 0, 0, 140, 140 )
+margin_left = 13.0
+margin_right = 12.0
+margin_top = 15.0
+margin_bottom = 13.0
+modulate_color = Color( 0.631373, 0.603922, 0.603922, 1 )
 
 [sub_resource type="StyleBoxFlat" id=9]
 bg_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 220, 140 )
+margin_left = 13.0
+margin_right = 12.0
+margin_top = 15.0
+margin_bottom = 15.0
+modulate_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+
+[sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 140, 70 )
+margin_left = 13.0
+margin_right = 13.0
+margin_top = 16.0
+margin_bottom = 14.0
+modulate_color = Color( 0.396078, 0.396078, 0.396078, 1 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 140, 70 )
+margin_left = 14.0
+margin_right = 14.0
+margin_top = 16.0
+margin_bottom = 12.0
+modulate_color = Color( 0.690196, 0.690196, 0.690196, 1 )
 
 [resource]
 default_font = ExtResource( 1 )
@@ -62,8 +92,6 @@ Button/styles/hover = SubResource( 7 )
 Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = SubResource( 5 )
 Label/colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-Label/constants/shadow_as_outline = 1
 OptionButton/constants/arrow_margin = 2
 OptionButton/constants/hseparation = 2
 OptionButton/fonts/font = ExtResource( 1 )
@@ -76,3 +104,8 @@ OptionButton/styles/pressed = null
 Panel/styles/panel = SubResource( 8 )
 ProgressBar/styles/bg = SubResource( 9 )
 ProgressBar/styles/fg = SubResource( 10 )
+TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
+TabContainer/colors/font_color_fg = Color( 1, 0, 0, 1 )
+TabContainer/styles/panel = SubResource( 11 )
+TabContainer/styles/tab_bg = SubResource( 12 )
+TabContainer/styles/tab_fg = SubResource( 13 )
