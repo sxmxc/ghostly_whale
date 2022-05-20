@@ -2,13 +2,14 @@ extends CanvasLayer
 
 onready var player_score_value = $ScoreBox/VBox/HBox/Label2
 onready var bonus_score_value = $ScoreBox/VBox/HBox2/Label2
-onready var multiplier_value = $ScoreBox/VBox/HBox3/Label2
+onready var multiplier_value = $ScoreBox/VBox/HBox3/TextureRect/Label2
 onready var hud_message = $HudMessage
 onready var score_anchor = $ScoreBox/VBox/HBox/ScoreAddAnchor
 onready var bonus_anchor = $ScoreBox/VBox/HBox2/BonusAddAnchor
 onready var mult_anchor = $ScoreBox/VBox/HBox3/MultAddAnchor
-onready var quality_value = $MarginContainer/VBoxContainer/ProgressBar
-onready var quality_anchor = $MarginContainer/VBoxContainer/ProgressBar/QualityAnchor
+onready var quality_value = $MarginContainer/VBoxContainer/CenterContainer/ProgressBar
+onready var quality_anchor = $MarginContainer/VBoxContainer/CenterContainer/ProgressBar/QualityAnchor
+onready var quality_label = $MarginContainer/VBoxContainer/CenterContainer/ProgressBar/Label
 
 
 # Declare member variables here. Examples:
@@ -29,6 +30,7 @@ func _show_message(message, time, position := hud_message.anchor.position):
 func _process(_delta):
 	player_score_value.set_text(str(Game.player_score))
 	bonus_score_value.set_text(str(Game.bonus_score))
-	multiplier_value.set_text(str(Game.score_multiplier))
+	multiplier_value.set_text("x%s" % str(Game.score_multiplier))
 	quality_value.set_value(Game.quality)
+	quality_label.set_text("%s%%" % str(Game.quality))
 	pass

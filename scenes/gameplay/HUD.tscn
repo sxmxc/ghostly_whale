@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/gameplay/HudTimer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/gameplay/HUD.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://scenes/menu/help_me_medium.tres" type="DynamicFont" id=4]
 [ext_resource path="res://scenes/gameplay/HudMessage.gd" type="Script" id=5]
 [ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=6]
+[ext_resource path="res://assets/UI/path998.png" type="Texture" id=7]
+[ext_resource path="res://assets/UI/radial_base_white.png" type="Texture" id=8]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 2 )
@@ -23,11 +25,41 @@ __meta__ = {
 
 [node name="VBox" type="VBoxContainer" parent="ScoreBox"]
 margin_right = 273.0
-margin_bottom = 145.0
+margin_bottom = 189.0
+
+[node name="HBox3" type="HBoxContainer" parent="ScoreBox/VBox"]
+margin_right = 273.0
+margin_bottom = 99.0
+
+[node name="TextureRect" type="TextureRect" parent="ScoreBox/VBox/HBox3"]
+margin_right = 99.0
+margin_bottom = 99.0
+texture = ExtResource( 7 )
+
+[node name="Label2" type="Label" parent="ScoreBox/VBox/HBox3/TextureRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -19.0
+margin_top = -18.5
+margin_right = 19.0
+margin_bottom = 18.5
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 3
+custom_constants/shadow_as_outline = 1
+custom_fonts/font = ExtResource( 4 )
+text = "x0"
+align = 1
+
+[node name="MultAddAnchor" type="Position2D" parent="ScoreBox/VBox/HBox3"]
+position = Vector2( 113, 46 )
 
 [node name="HBox" type="HBoxContainer" parent="ScoreBox/VBox"]
+margin_top = 107.0
 margin_right = 273.0
-margin_bottom = 37.0
+margin_bottom = 144.0
 
 [node name="Label" type="Label" parent="ScoreBox/VBox/HBox"]
 margin_right = 248.0
@@ -56,9 +88,9 @@ __meta__ = {
 position = Vector2( 298, 20 )
 
 [node name="HBox2" type="HBoxContainer" parent="ScoreBox/VBox"]
-margin_top = 45.0
+margin_top = 152.0
 margin_right = 273.0
-margin_bottom = 82.0
+margin_bottom = 189.0
 
 [node name="Label" type="Label" parent="ScoreBox/VBox/HBox2"]
 margin_right = 246.0
@@ -85,38 +117,6 @@ __meta__ = {
 }
 
 [node name="BonusAddAnchor" type="Position2D" parent="ScoreBox/VBox/HBox2"]
-position = Vector2( 298, 20 )
-
-[node name="HBox3" type="HBoxContainer" parent="ScoreBox/VBox"]
-margin_top = 90.0
-margin_right = 273.0
-margin_bottom = 127.0
-
-[node name="Label" type="Label" parent="ScoreBox/VBox/HBox3"]
-margin_right = 221.0
-margin_bottom = 37.0
-custom_constants/shadow_offset_y = 2
-custom_fonts/font = ExtResource( 4 )
-text = "Multiplier x"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="ScoreBox/VBox/HBox3"]
-margin_left = 229.0
-margin_right = 246.0
-margin_bottom = 37.0
-custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_y = 3
-custom_constants/shadow_as_outline = 1
-custom_fonts/font = ExtResource( 4 )
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MultAddAnchor" type="Position2D" parent="ScoreBox/VBox/HBox3"]
 position = Vector2( 298, 20 )
 
 [node name="HudTimer" type="CenterContainer" parent="."]
@@ -182,7 +182,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_right = 243.0
-margin_bottom = 64.0
+margin_bottom = 192.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 margin_right = 243.0
@@ -191,13 +191,35 @@ custom_fonts/font = ExtResource( 4 )
 text = "Meat Quality"
 align = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 45.0
 margin_right = 243.0
-margin_bottom = 64.0
-value = 100.0
+margin_bottom = 192.0
 
-[node name="QualityAnchor" type="Position2D" parent="MarginContainer/VBoxContainer/ProgressBar"]
-position = Vector2( 263, 7 )
+[node name="ProgressBar" type="TextureProgress" parent="MarginContainer/VBoxContainer/CenterContainer"]
+show_behind_parent = true
+margin_left = 48.0
+margin_right = 195.0
+margin_bottom = 147.0
+value = 100.0
+texture_under = ExtResource( 8 )
+texture_progress = ExtResource( 8 )
+fill_mode = 5
+tint_under = Color( 0, 0, 0, 1 )
+tint_progress = Color( 1, 0, 0, 1 )
+
+[node name="QualityAnchor" type="Position2D" parent="MarginContainer/VBoxContainer/CenterContainer/ProgressBar"]
+position = Vector2( 74, 48 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer/ProgressBar"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -9.5
+margin_right = 20.0
+margin_bottom = 9.5
+text = "100%"
 
 [connection signal="timeout" from="HudTimer/Timer" to="HudTimer" method="_on_Timer_timeout"]
