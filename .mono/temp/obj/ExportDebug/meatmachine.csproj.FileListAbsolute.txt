@@ -1,8 +1,0 @@
-D:\Projects\Godot\ghostly_whale\.mono\temp\bin\ExportDebug\meatmachine.dll
-D:\Projects\Godot\ghostly_whale\.mono\temp\bin\ExportDebug\meatmachine.pdb
-D:\Projects\Godot\ghostly_whale\.mono\temp\obj\ExportDebug\meatmachine.csprojAssemblyReference.cache
-D:\Projects\Godot\ghostly_whale\.mono\temp\obj\ExportDebug\meatmachine.AssemblyInfoInputs.cache
-D:\Projects\Godot\ghostly_whale\.mono\temp\obj\ExportDebug\meatmachine.AssemblyInfo.cs
-D:\Projects\Godot\ghostly_whale\.mono\temp\obj\ExportDebug\meatmachine.csproj.CoreCompileInputs.cache
-D:\Projects\Godot\ghostly_whale\.mono\temp\obj\ExportDebug\meatmachine.dll
-D:\Projects\Godot\ghostly_whale\.mono\temp\obj\ExportDebug\meatmachine.pdb

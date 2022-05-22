@@ -42,8 +42,9 @@ func _thread_load(path):
 func _thread_done(resource):
 	assert(resource)
 	if load_network_data:
-		Game.main.network_client.data_container._load_leader_boards()
-		yield(Game.main.network_client.data_container,"data_loaded")
+		if Game.network_connected:
+			Game.main.network_client.data_container._load_leader_boards()
+			yield(Game.main.network_client.data_container,"data_loaded")
 	# Always wait for threads to finish, this is required on Windows.
 	thread.wait_to_finish()
 	emit_signal("resource_stage_loaded", stages_amount, stages_amount)

@@ -88,7 +88,7 @@ func reset():
 
 func showAtPos(pos):
 	if AnalogTapToShow:
-		animation_player.play("alpha_in", 0.2)
+		animation_player.play("alpha_in", 0)
 		global_position = pos
 	
 func hide():

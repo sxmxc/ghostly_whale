@@ -48,33 +48,34 @@ func _connect():
 	current_user = session.username
 
 func _submit_score(board, score):
-	var record : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board, score), "completed")
-	if record.is_exception():
-		print("An error occured: %s" % record)
-	else:
-		print("New level record username %s and score %s" % [record.username, record.score])
-		emit_signal("high_score")
-	
-	var daily : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board + "_daily", score), "completed")
-	if daily.is_exception():
-		print("An error occured: %s" % daily)
-	else:
-		print("New daily record username %s and score %s" % [daily.username, daily.score])
-		emit_signal("high_score")
-	
-	var monthly : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board + "_monthly", score), "completed")
-	if monthly.is_exception():
-		print("An error occured: %s" % monthly)
-	else:
-		print("New monthly record username %s and score %s" % [monthly.username, monthly.score])
-		emit_signal("high_score")
-	
-	var yearly : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board +"_yearly", score), "completed")
-	if yearly.is_exception():
-		print("An error occured: %s" % yearly)
-	else:
-		print("New yearly record username %s and score %s" % [yearly.username, yearly.score])
-		emit_signal("high_score")
+	if Game.network_connected:
+		var record : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board, score), "completed")
+		if record.is_exception():
+			print("An error occured: %s" % record)
+		else:
+			print("New level record username %s and score %s" % [record.username, record.score])
+			emit_signal("high_score")
+		
+		var daily : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board + "_daily", score), "completed")
+		if daily.is_exception():
+			print("An error occured: %s" % daily)
+		else:
+			print("New daily record username %s and score %s" % [daily.username, daily.score])
+			emit_signal("high_score")
+		
+		var monthly : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board + "_monthly", score), "completed")
+		if monthly.is_exception():
+			print("An error occured: %s" % monthly)
+		else:
+			print("New monthly record username %s and score %s" % [monthly.username, monthly.score])
+			emit_signal("high_score")
+		
+		var yearly : NakamaAPI.ApiLeaderboardRecord = yield(client.write_leaderboard_record_async(session, board +"_yearly", score), "completed")
+		if yearly.is_exception():
+			print("An error occured: %s" % yearly)
+		else:
+			print("New yearly record username %s and score %s" % [yearly.username, yearly.score])
+			emit_signal("high_score")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
