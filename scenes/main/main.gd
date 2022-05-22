@@ -23,6 +23,8 @@ onready var transitions: Transition = $Transitions
 onready var active_scene_container = $ActiveSceneContainer
 onready var network_client = $NetworkClient
 
+enum meat_type {HYOOMIE,GOOMIE}
+
 
 
 

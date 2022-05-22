@@ -14,6 +14,7 @@
 
 [node name="Level1" type="Node"]
 script = ExtResource( 11 )
+level_y_bounds = 1280
 
 [node name="PauseLayer" parent="." instance=ExtResource( 2 )]
 
