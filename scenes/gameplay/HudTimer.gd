@@ -28,7 +28,7 @@ func _process(delta):
 	var seconds = int(timer.get_time_left()) % 60
 	
 	timer_value.text = "%02d:%02d" % [minutes, seconds]
-	timer_display.set_value(timer.get_time_left())
+	timer_display.set_value(seconds + (minutes * 60))
 	pass
 
 func _start_round(rt = 90):

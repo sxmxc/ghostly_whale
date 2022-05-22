@@ -273,13 +273,13 @@ __meta__ = {
 [node name="Spinner" type="TextureRect" parent="ColorRect/Progress"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -60.0
-margin_top = -76.0
-margin_right = 70.0
-margin_bottom = 46.0
-rect_rotation = -117.492
+margin_left = -141.0
+margin_top = -70.0
+margin_right = -11.0
+margin_bottom = 52.0
+rect_rotation = -250.452
 rect_scale = Vector2( 0.3, 0.3 )
-rect_pivot_offset = Vector2( 63.2942, 59.1622 )
+rect_pivot_offset = Vector2( 61.1418, 59.7545 )
 mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
@@ -311,7 +311,8 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="ColorRect/Progress/ProgressBar"]
 
 [node name="Particles2D" type="Particles2D" parent="ColorRect/Progress"]
-position = Vector2( 19, 3 )
+position = Vector2( -68, 6 )
+rotation = -0.230825
 amount = 100
 process_material = SubResource( 11 )
 texture = ExtResource( 5 )
