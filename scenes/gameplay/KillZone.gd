@@ -4,6 +4,8 @@ onready var particles = $Particles2D
 onready var explode_particles = $ExplodingParticles
 onready var animation_player = $AnimationPlayer
 
+export (Main.meat_type) var grinder_type = Main.meat_type.HYOOMIE
+
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -23,7 +25,7 @@ func _ready():
 func _on_KillZone_body_entered(body):
 	if body.get_parent() in get_tree().get_nodes_in_group("ragdoll"):
 		if !body.get_parent().destroying:
-			body.get_parent()._destroy()
+			body.get_parent()._destroy(grinder_type)
 			particles.restart()
 			particles.set_emitting(true)
 			explode_particles.restart()

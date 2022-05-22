@@ -1,12 +1,12 @@
 extends CanvasLayer
 
-onready var player_score_value = $ScoreBox/VBox/HBox/Label2
-onready var bonus_score_value = $ScoreBox/VBox/HBox2/Label2
-onready var multiplier_value = $ScoreBox/VBox/HBox3/TextureRect/Label2
+onready var player_score_value = $ScoreBox/HBox3/PlayerScore/HBox/value
+onready var bonus_score_value = $ScoreBox/HBox3/PlayerScore/HBox2/value
+onready var multiplier_value = $ScoreBox/HBox3/ScoreImage/Label2
 onready var hud_message = $HudMessage
-onready var score_anchor = $ScoreBox/VBox/HBox/ScoreAddAnchor
-onready var bonus_anchor = $ScoreBox/VBox/HBox2/BonusAddAnchor
-onready var mult_anchor = $ScoreBox/VBox/HBox3/MultAddAnchor
+onready var score_anchor = $ScoreBox/HBox3/PlayerScore/HBox/ScoreAddAnchor
+onready var bonus_anchor = $ScoreBox/HBox3/PlayerScore/HBox2/BonusAddAnchor
+onready var mult_anchor = $ScoreBox/HBox3/MultAddAnchor
 onready var quality_value = $MarginContainer/VBoxContainer/CenterContainer/ProgressBar
 onready var quality_anchor = $MarginContainer/VBoxContainer/CenterContainer/ProgressBar/QualityAnchor
 onready var quality_label = $MarginContainer/VBoxContainer/CenterContainer/ProgressBar/Label

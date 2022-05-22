@@ -16,7 +16,9 @@ onready var blood_splatter = preload("res://scenes/gameplay/BloodSplatter.tscn")
 onready var timer = $Timer
 onready var camera = $Body/Camera2D
 
-export var destroying = false
+var destroying = false
+
+export (Main.meat_type) var meat_type = Main.meat_type.HYOOMIE
 
 export var impact_threshold = 50
 
@@ -31,11 +33,19 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _destroy():
+func _destroy(grinder_type):
+	if grinder_type == meat_type:
+		add_points()
+	else:
+		remove_points()
+
+	
+
+func add_points():
 	if impulse_count == 1:
 		emit_signal("hole_in_one")
-		if Game.quality == 100:
-			emit_signal("perfect")
+	if Game.quality == 100:
+		emit_signal("perfect")
 	destroying = true
 	head_rigid_body.sleeping = true
 	body_rigid_body.sleeping = true
@@ -47,9 +57,21 @@ func _destroy():
 	get_parent().hud._show_message("+%d" % score, 3, get_parent().hud.score_anchor.global_position)
 	yield(timer,"timeout")
 	self.call_deferred("queue_free")
-	emit_signal("ragdoll_destroyed")
+	emit_signal("ragdoll_destroyed")	
 	
-	
+func remove_points():
+	destroying = true
+	head_rigid_body.sleeping = true
+	body_rigid_body.sleeping = true
+	self.visible = false
+	timer.start()
+	camera.shake(2,15,8)
+	var score = Game.quality
+	Game.player_score -= score
+	get_parent().hud._show_message("-%d" % score, 3, get_parent().hud.score_anchor.global_position)
+	yield(timer,"timeout")
+	self.call_deferred("queue_free")
+	emit_signal("ragdoll_destroyed")	
 
 func launch(force: Vector2):
 	head_rigid_body.mode = RigidBody2D.MODE_RIGID

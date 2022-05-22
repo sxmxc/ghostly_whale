@@ -1,14 +1,19 @@
 extends Node
 class_name LevelBase
 
-export var ragdoll_scene = preload("res://scenes/gameplay/Ragdoll.tscn")
+export var hyoomie_ragdoll_scene = preload("res://scenes/gameplay/ragdolls/HyoomieRagdoll.tscn")
+export var goomie_ragdoll_scene = preload("res://scenes/gameplay/ragdolls/GoomieRagdoll.tscn")
 export var game_round_time = 90
+export var level_y_bounds = 0
 
 onready var launcher = $Input/VectorCreator
 onready var hud = $HUD
 onready var round_timer = $HUD/HudTimer
 onready var round_end_canvas = $RoundEnd
 onready var input_canvas = $Input
+
+var rng = RandomNumberGenerator.new()
+var rando = 0
 
 
 
@@ -35,20 +40,13 @@ func start():
 	round_timer.connect("round_over", self, "_on_round_end")
 	round_timer._start_round(game_round_time)
 	Game.connect("new_high_score", self, "_on_high_score")
+
+func _ready():
+	rng.randomize()
+	rando = rng.randi_range(0, 1)
 	
 func _spawn_ragdoll():
-	Game.quality = 100
-	var position = get_tree().get_nodes_in_group("spawn_point")[0]
-	var ragdoll = ragdoll_scene.instance()
-	ragdoll.global_position = position.global_position
-	ragdoll.connect("ragdoll_destroyed", self, "_on_Ragdoll_ragdoll_destroyed")
-	ragdoll.connect("ragdoll_high_impact", self, "_on_Ragdoll_ragdoll_high_impact")
-	ragdoll.connect("hole_in_one", self, "_on_Ragdoll_ragdoll_hole_in_one")
-	ragdoll.connect("perfect", self, "_on_Ragdoll_ragdoll_perfect")
-	launcher.connect("vector_created", ragdoll, "_on_VectorCreator_vector_created")
-	launcher.connect("time_slowed", ragdoll,"_on_time_slowed")
-	launcher.connect("time_normal", ragdoll,"_on_time_normal")
-	add_child(ragdoll)
+	pass
 
 func _on_round_end():
 	for child in input_canvas.get_children():
