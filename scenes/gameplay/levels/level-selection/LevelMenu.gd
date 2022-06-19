@@ -26,10 +26,10 @@ func _ready():
 		var level_box = level_box_scene.instance()
 		level_box.connect("level_selected", self, "_on_level_selected")
 		#level_box.get_node("local_best").text = "Local best: %d" % Game.level_dictionary[level].current_high 
-		if Game.network_connected:
-			var global_best = Game.main.network_client.data_container.level_weekly_boards[level]
-			if global_best.records.size() > 0:
-				level_box.get_node("global_best").text = "Global best: %s" % global_best.records[0].score
+#		if Game.network_connected:
+#			var global_best = Game.main.network_client.data_container.level_weekly_boards[level]
+#			if global_best.records.size() > 0:
+#				level_box.get_node("global_best").text = "Global best: %s" % global_best.records[0].score
 		level_grid.add_child(level_box)
 		level_box.level_num = level
 		level_box.locked = Game.level_dictionary[level].locked

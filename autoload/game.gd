@@ -133,7 +133,7 @@ func _force_main_scene_load():
 	var played_scene = get_tree().current_scene
 	var root = get_node("/root")
 	main = load("res://scenes/main/main.tscn").instance()
-	main.splash_transition_on_start = false
+	main.splash_transition_on_start = true
 	root.remove_child(played_scene)
 	root.add_child(main)
 	main.active_scene_container.get_child(0).queue_free()

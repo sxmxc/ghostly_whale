@@ -3,6 +3,7 @@ class_name LevelBase
 
 export var hyoomie_ragdoll_scene = preload("res://scenes/gameplay/ragdolls/HyoomieRagdoll.tscn")
 export var goomie_ragdoll_scene = preload("res://scenes/gameplay/ragdolls/GoomieRagdoll.tscn")
+export var goomi_ball_scene = preload("res://scenes/gameplay/ragdolls/NonRagdoll.tscn")
 export var non_ragdoll_scene = preload("res://scenes/gameplay/ragdolls/NonRagdoll.tscn")
 export var game_round_time = 90
 export var level_y_bounds = 0

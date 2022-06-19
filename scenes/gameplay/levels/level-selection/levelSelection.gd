@@ -7,6 +7,8 @@ onready var level_menu = $CanvasLayer/LevelMenu
 
 func pre_start(params):
 	print("\nlevelSelection.gd:pre_start() called with params = ")
+	SoundManager.stop("intro1")
+	SoundManager.play_bgm("cold_world")
 	if params:
 		for key in params:
 			var val = params[key]
@@ -20,7 +22,7 @@ func _ready():
 # `start()` is called when the graphic transition ends.
 func start():
 	canvas_mod.visible = true
-	print("\ngameplay.gd:start() called")
+	print("\nlevelSelection.gd:start() called")
 	var active_scene: Node = Game.get_active_scene()
 	print("\nCurrent active scene is: ",
 		active_scene.name, " (", active_scene.filename, ")")
@@ -28,6 +30,7 @@ func start():
 	
 
 func _on_LevelButton_pressed(level_num):
+	SoundManager.play_se("stinger")
 	var params = {
 		show_progress_bar = true,
 		fetch_data = false
@@ -37,7 +40,9 @@ func _on_LevelButton_pressed(level_num):
 
 
 func _on_Button_pressed():
+	SoundManager.play_se("stinger")
 	Game.change_scene("res://scenes/menu/menu.tscn", {
 		'show_progress_bar': true,
-		'fetch_data': false
+		'fetch_data': false,
+		'splash': false
 	})

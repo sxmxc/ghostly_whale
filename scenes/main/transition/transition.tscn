@@ -60,7 +60,7 @@ expand_margin_bottom = 2.0
 [sub_resource type="Curve" id=9]
 _data = [ Vector2( 0.0217391, 0.514773 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=10]
+[sub_resource type="CurveTexture" id=12]
 curve = SubResource( 9 )
 
 [sub_resource type="ParticlesMaterial" id=11]
@@ -81,7 +81,7 @@ damping = 15.12
 damping_random = 0.93
 angle = -167.4
 scale = 0.01
-scale_curve = SubResource( 10 )
+scale_curve = SubResource( 12 )
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -252,9 +252,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 color = Color( 0.0862745, 0.0862745, 0.0862745, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Progress" type="Control" parent="ColorRect"]
 anchor_left = 0.5

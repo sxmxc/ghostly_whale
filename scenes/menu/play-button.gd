@@ -19,4 +19,5 @@ func _on_Button_pressed():
 #			"val": 15
 #		},
 	}
+	SoundManager.play_se("stinger")
 	Game.change_scene("res://scenes/gameplay/levels/level-selection/levelSelection.tscn", params)

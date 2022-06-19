@@ -73,6 +73,7 @@ func _input(event):
 
 	if event.is_action_released("ui_touch"):
 		touch_down = false
+		SoundManager.play_se("swoosh")
 		emit_signal("vector_created", vector * 2)
 		Engine.time_scale = 1
 		emit_signal("time_normal")
@@ -82,6 +83,7 @@ func _input(event):
 		position_end = event.position
 		vector = -(position_end - position_start).clamped(maximum_length)
 		Engine.time_scale = .125
+		SoundManager.play_se("bouncer")
 		emit_signal("time_slowed")
 		update()
 

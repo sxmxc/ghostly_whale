@@ -23,11 +23,13 @@ func _spawn_ragdoll():
 	Game.quality = 100
 	var position = get_tree().get_nodes_in_group("spawn_point")[0]
 	var ragdoll
-	rando = rng.randi_range(0, 1)
+	rando = rng.randi_range(0, 2)
 	if rando == 0:
 		ragdoll = hyoomie_ragdoll_scene.instance()
 	elif rando == 1:
 		ragdoll = goomie_ragdoll_scene.instance()
+	elif rando == 2:
+		ragdoll = goomi_ball_scene.instance()
 	ragdoll.global_position = position.global_position
 	ragdoll.connect("ragdoll_destroyed", self, "_on_Ragdoll_ragdoll_destroyed")
 	ragdoll.connect("ragdoll_high_impact", self, "_on_Ragdoll_ragdoll_high_impact")

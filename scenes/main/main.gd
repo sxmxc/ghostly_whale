@@ -14,7 +14,7 @@ const FALLBACK_SCENE = "res://scenes/menu/menu.tscn"
 # Toggles initial graphic transition when starting the game.
 # Scenes run with "Play Scene" never use transitions (to speed up development).
 # Note: this may be replaced with custom splash screens in the future
-export var splash_transition_on_start = false
+export var splash_transition_on_start = true
 
 var size := Vector2()
 var scenes: Scenes
