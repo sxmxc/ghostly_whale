@@ -9,6 +9,10 @@ func pre_start(params):
 
 # `start()` is called when the graphic transition ends.
 func start():
+
+	SoundManager.stop("intro1")
+	SoundManager.stop("cold_world")
+	SoundManager.play_bgm("too_crazy")
 	for child in input_canvas.get_children():
 		child.hide()
 	var new_dialog = Dialogic.start('tutorial')

@@ -154,6 +154,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/main/scenes.gd"
 }, {
+"base": "Node",
+"class": "SoundManagerModule",
+"language": "GDScript",
+"path": "res://addons/sound_manager/module/internal_scripts/SoundManager_config.gd"
+}, {
 "base": "CanvasLayer",
 "class": "Transition",
 "language": "GDScript",
@@ -189,6 +194,7 @@ _global_script_class_icons={
 "NakamaWriteStorageObject": "",
 "SceneData": "",
 "Scenes": "",
+"SoundManagerModule": "",
 "Transition": ""
 }
 
@@ -198,6 +204,7 @@ config/name="MeatMachine"
 config/description="No Description"
 run/main_scene="res://scenes/main/main.tscn"
 boot_splash/image="res://assets/splash.png"
+boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.0862745, 0.0862745, 0.0862745, 1 )
 config/icon="res://assets/blade.png"
 config/version="1.0.0-alpha"
@@ -206,6 +213,7 @@ config/version="1.0.0-alpha"
 
 Game="*res://autoload/game.gd"
 Nakama="*res://addons/com.heroiclabs.nakama/Nakama.gd"
+SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
 
 [display]
 
@@ -218,7 +226,7 @@ window/stretch/aspect="keep_width"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/ResolutionManager/plugin.cfg", "res://addons/dialogic/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/ResolutionManager/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/sound_manager/plugin.cfg" )
 
 [gui]
 

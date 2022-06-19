@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/gameplay/levels/level-selection/levelSelection.gd" type="Script" id=1]
 [ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://assets/sprites/ZombieInvasionBg1.png" type="Texture" id=4]
 [ext_resource path="res://scenes/menu/MenuLight.gd" type="Script" id=5]
 [ext_resource path="res://assets/sprites/light_cone.png" type="Texture" id=6]
+[ext_resource path="res://scenes/gameplay/levels/level-selection/LevelMenu.gd" type="Script" id=8]
+[ext_resource path="res://assets/Icons/play-button.png" type="Texture" id=9]
+[ext_resource path="res://scenes/gameplay/levels/level-selection/ClipControl.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -39,6 +42,10 @@ tracks/0/keys = {
 "values": [ 38.0, -38.0 ]
 }
 
+[sub_resource type="ImageTexture" id=4]
+
+[sub_resource type="ImageTexture" id=5]
+
 [node name="LevelSelection" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -47,63 +54,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1279.0
 margin_bottom = 720.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-margin_right = 1279.0
-margin_bottom = 233.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="CenterContainer"]
-margin_left = 350.0
-margin_top = 79.0
-margin_right = 929.0
-margin_bottom = 153.0
-custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_y = 0
-custom_constants/shadow_as_outline = 2
-custom_fonts/font = ExtResource( 3 )
-text = "Level Selection"
-
-[node name="CenterContainer2" type="CenterContainer" parent="."]
-margin_top = 196.0
-margin_right = 1281.0
-margin_bottom = 718.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="GridContainer" type="GridContainer" parent="CenterContainer2"]
-margin_left = 640.0
-margin_top = 261.0
-margin_right = 640.0
-margin_bottom = 261.0
-theme = ExtResource( 2 )
-custom_constants/vseparation = 3
-custom_constants/hseparation = 20
-columns = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button" type="Button" parent="."]
-margin_left = 29.0
-margin_top = 652.0
-margin_right = 116.0
-margin_bottom = 689.0
-theme = ExtResource( 2 )
-text = " Back "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 z_index = 4
@@ -130,4 +83,84 @@ anims/light_swing = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="Light2D"]
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LevelMenu" type="MarginContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+script = ExtResource( 8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelMenu"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1260.0
+margin_bottom = 700.0
+custom_constants/separation = 50
+
+[node name="Title" type="Label" parent="CanvasLayer/LevelMenu/VBoxContainer"]
+margin_right = 1240.0
+margin_bottom = 55.0
+custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_y = 0
+custom_constants/shadow_as_outline = 2
+custom_fonts/font = ExtResource( 3 )
+text = "Level Selection"
+align = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelMenu/VBoxContainer"]
+margin_top = 105.0
+margin_right = 1240.0
+margin_bottom = 593.0
+size_flags_vertical = 3
+
+[node name="GridPrev" type="TextureButton" parent="CanvasLayer/LevelMenu/VBoxContainer/HBoxContainer"]
+margin_right = 257.0
+margin_bottom = 488.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 9 )
+texture_disabled = SubResource( 4 )
+expand = true
+stretch_mode = 5
+flip_h = true
+
+[node name="ClipControl" type="Control" parent="CanvasLayer/LevelMenu/VBoxContainer/HBoxContainer"]
+margin_left = 265.0
+margin_right = 975.0
+margin_bottom = 488.0
+rect_min_size = Vector2( 710, 444 )
+rect_clip_content = true
+size_flags_horizontal = 0
+script = ExtResource( 10 )
+
+[node name="GridBox" type="HBoxContainer" parent="CanvasLayer/LevelMenu/VBoxContainer/HBoxContainer/ClipControl"]
+
+[node name="GridNext" type="TextureButton" parent="CanvasLayer/LevelMenu/VBoxContainer/HBoxContainer"]
+margin_left = 983.0
+margin_right = 1240.0
+margin_bottom = 488.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 9 )
+texture_disabled = SubResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="CanvasLayer/LevelMenu/VBoxContainer"]
+margin_top = 643.0
+margin_right = 118.0
+margin_bottom = 680.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 2 )
+text = " Back "
+
+[node name="Tween" type="Tween" parent="CanvasLayer/LevelMenu"]
+
+[connection signal="pressed" from="CanvasLayer/LevelMenu/VBoxContainer/HBoxContainer/GridPrev" to="CanvasLayer/LevelMenu" method="_on_GridPrev_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelMenu/VBoxContainer/HBoxContainer/GridNext" to="CanvasLayer/LevelMenu" method="_on_GridNext_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelMenu/VBoxContainer/Button" to="." method="_on_Button_pressed"]

@@ -34,6 +34,8 @@ func _ready():
 #	pass
 
 func _destroy(grinder_type):
+	SoundManager.play_se("impact")
+	SoundManager.play_se("scream")
 	if grinder_type == meat_type:
 		add_points()
 	else:
@@ -74,6 +76,7 @@ func remove_points():
 	emit_signal("ragdoll_destroyed")	
 
 func launch(force: Vector2):
+	SoundManager.play_se("impact")
 	head_rigid_body.mode = RigidBody2D.MODE_RIGID
 	body_rigid_body.mode = RigidBody2D.MODE_RIGID
 	body_rigid_body.apply_impulse(Vector2.ZERO, force)
@@ -90,7 +93,9 @@ func _on_time_normal():
 	
 func _on_Head_body_entered(body):
 	if body in get_tree().get_nodes_in_group("obstacles"):
+		SoundManager.play_se("impact")
 		if head_rigid_body.linear_velocity.x > impact_threshold || head_rigid_body.linear_velocity.y > impact_threshold:
+			SoundManager.play_se("splat")
 			var splatter = blood_splatter.instance()
 			Game.get_active_scene().add_child(splatter)
 			splatter.global_position = head_rigid_body.global_position

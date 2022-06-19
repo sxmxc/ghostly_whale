@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/menu/menu-theme.tres" type="Theme" id=1]
+[ext_resource path="res://scenes/gameplay/levels/level-selection/LevelGrid.gd" type="Script" id=2]
+
+[node name="LevelGrid" type="GridContainer"]
+margin_left = 93.0
+margin_top = 39.0
+margin_right = 803.0
+margin_bottom = 484.0
+theme = ExtResource( 1 )
+custom_constants/vseparation = 10
+custom_constants/hseparation = 10
+columns = 6
+script = ExtResource( 2 )
