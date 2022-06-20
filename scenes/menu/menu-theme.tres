@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=2]
+[gd_resource type="Theme" load_steps=21 format=2]
 
 [ext_resource path="res://scenes/menu/help_me.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/menu/help_me_medium.tres" type="DynamicFont" id=2]
@@ -6,6 +6,11 @@
 [ext_resource path="res://assets/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal023.png" type="Texture" id=4]
 [ext_resource path="res://assets/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal024.png" type="Texture" id=5]
 [ext_resource path="res://assets/kenney_physicsAssets_v2/PNG/Metal elements/elementMetal012.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 3 )
+region_rect = Rect2( 16, 16, 128, 32 )
+modulate_color = Color( 0.458824, 0.45098, 0.45098, 1 )
 
 [sub_resource type="AtlasTexture" id=6]
 flags = 4
@@ -88,6 +93,7 @@ Button/colors/font_color_focus = Color( 0.666667, 0.0941176, 0.0941176, 1 )
 Button/colors/font_color_hover = Color( 0.956863, 0.0313726, 0.0313726, 1 )
 Button/colors/font_color_pressed = Color( 0.207031, 0.0253361, 0.0202179, 1 )
 Button/fonts/font = ExtResource( 2 )
+Button/styles/disabled = SubResource( 14 )
 Button/styles/hover = SubResource( 7 )
 Button/styles/normal = SubResource( 2 )
 Button/styles/pressed = SubResource( 5 )

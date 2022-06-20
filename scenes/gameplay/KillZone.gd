@@ -14,6 +14,7 @@ export (Main.meat_type) var grinder_type = Main.meat_type.HYOOMIE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SoundManager.play_bgs("engine")
 	animation_player.play("blades_running")
 	pass # Replace with function body.
 
@@ -24,6 +25,7 @@ func _ready():
 
 func _on_KillZone_body_entered(body):
 	if body.get_parent() in get_tree().get_nodes_in_group("ragdoll"):
+		SoundManager.play_bgs("chainsaw")
 		if !body.get_parent().destroying:
 			body.get_parent()._destroy(grinder_type)
 			particles.restart()

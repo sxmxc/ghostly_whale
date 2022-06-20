@@ -1,7 +1,8 @@
 extends Control
 
-onready var canvas_mod = $CanvasModulate
+onready var canvas_mod = $Background/CanvasModulate
 onready var splash = $Splash
+onready var settings = $Foreground/SettingsPanel
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -14,8 +15,8 @@ func pre_start(params = {"splash": true}):
 			var val = params[key]
 			printt("", key, val)
 	canvas_mod.visible = false
-	if params.has("splash"):
-		if params["splash"]:
+	if params.has("show_splash"):
+		if params["show_splash"]:
 			splash.visible = true
 		else:
 			splash.visible = false
@@ -33,6 +34,7 @@ func start():
 func _ready():
 	SoundManager.stop("cold_world")
 	SoundManager.stop("too_crazy")
+	SoundManager.stop("engine")
 	SoundManager.play_bgm("intro1")
 	var timer = Timer.new()
 	add_child(timer)
@@ -46,3 +48,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_SettingsButton_pressed():
+	settings.visible = true
+	pass # Replace with function body.
+
+
+func _on_BackButton_pressed():
+	settings.visible = false
+	pass # Replace with function body.

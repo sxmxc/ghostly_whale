@@ -1,10 +1,7 @@
 extends Light2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-#onready var animation = $AnimationPlayer
+
 onready var flicker_tween = $FlickerTween
 onready var sway_tween = $SwayTween
 onready var timer = $Timer
@@ -23,14 +20,20 @@ func _ready():
 
 
 func _start_sway():
+	SoundManager.play_bgs("screech")
 	sway_tween.interpolate_property(self,"rotation_degrees", sway_values[0], sway_values[1], 15,Tween.TRANS_ELASTIC,Tween.EASE_OUT_IN)
 	sway_tween.start()
 	
 
 func _surge():
 	var rando = rng.randi_range(0, 5)
+	var rando2 = rng.randi_range(0,1)
 	flicker_tween.interpolate_property(self,"energy", .5, 1, .5,Tween.TRANS_ELASTIC,Tween.EASE_IN_OUT)
 	flicker_tween.start()
+	if rando2 == 0:
+		SoundManager.play_bgs("electric01")
+	else:
+		SoundManager.play_bgs("electric02")
 	timer.start(rando)
 
 func _on_sway_tween_completed(_object, key):

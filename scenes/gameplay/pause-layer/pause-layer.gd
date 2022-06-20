@@ -41,7 +41,8 @@ func _on_Resume_pressed():
 func _on_Main_Menu_pressed():
 	Game.change_scene("res://scenes/menu/menu.tscn", {
 		'show_progress_bar': true,
-		'fetch_data': false
+		'fetch_data': false, 
+		'show_splash': false
 	})
 
 
@@ -56,5 +57,5 @@ func _on_Restart_pressed():
 func _on_Level_Selection_pressed():
 	Game.change_scene("res://scenes/gameplay/levels/level-selection/levelSelection.tscn", {
 		'show_progress_bar': true,
-		fetch_data = true
+		fetch_data = false
 	})

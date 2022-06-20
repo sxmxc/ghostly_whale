@@ -213,7 +213,7 @@ scale_curve = SubResource( 54 )
 color = Color( 0.6, 0.6, 0.6, 0.364706 )
 
 [node name="GoomieGrinder" type="Area2D"]
-position = Vector2( 1845, 435 )
+position = Vector2( 579, 387 )
 script = ExtResource( 3 )
 grinder_type = 1
 

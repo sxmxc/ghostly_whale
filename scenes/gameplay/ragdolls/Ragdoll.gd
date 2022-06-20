@@ -35,7 +35,10 @@ func _ready():
 
 func _destroy(grinder_type):
 	SoundManager.play_se("impact")
-	SoundManager.play_se("scream")
+	if meat_type == Main.meat_type.HYOOMIE:
+		SoundManager.play_se("scream")
+	else:
+		SoundManager.play_se("gyoomie_death")
 	if grinder_type == meat_type:
 		add_points()
 	else:

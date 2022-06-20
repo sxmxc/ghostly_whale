@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/menu/help_me_large.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/menu/play-button.gd" type="Script" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://scenes/menu/menu.gd" type="Script" id=13]
 [ext_resource path="res://assets/splash.png" type="Texture" id=14]
 [ext_resource path="res://scenes/menu/Splash.gd" type="Script" id=15]
+[ext_resource path="res://scenes/menu/help_me_medium.tres" type="DynamicFont" id=16]
+[ext_resource path="res://scenes/menu/SettingsButton.gd" type="Script" id=17]
 
 [sub_resource type="Animation" id=8]
 length = 0.001
@@ -125,20 +127,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 7 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-z_index = 4
-color = Color( 0.243137, 0.243137, 0.243137, 1 )
-
-[node name="Light2D" type="Light2D" parent="."]
+[node name="Light2D" type="Light2D" parent="Background"]
 position = Vector2( 769.315, -534.368 )
 rotation = 0.663225
 scale = Vector2( 6.05596, 6.22599 )
@@ -147,27 +139,39 @@ texture = ExtResource( 5 )
 offset = Vector2( 0, 200 )
 texture_scale = 0.5
 color = Color( 0.968627, 0.678431, 0.678431, 1 )
+range_layer_min = -1
 script = ExtResource( 9 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Light2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/Light2D"]
 anims/RESET = SubResource( 8 )
 anims/light_swing = SubResource( 9 )
 
-[node name="FlickerTween" type="Tween" parent="Light2D"]
+[node name="FlickerTween" type="Tween" parent="Background/Light2D"]
 
-[node name="SwayTween" type="Tween" parent="Light2D"]
+[node name="SwayTween" type="Tween" parent="Background/Light2D"]
 
-[node name="Timer" type="Timer" parent="Light2D"]
+[node name="Timer" type="Timer" parent="Background/Light2D"]
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+expand = true
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Background"]
+z_index = 4
+color = Color( 0.243137, 0.243137, 0.243137, 1 )
+
+[node name="Foreground" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="MenuTitle" type="CenterContainer" parent="Foreground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -339.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
-[node name="Title" type="Label" parent="CenterContainer"]
+[node name="Title" type="Label" parent="Foreground/MenuTitle"]
 margin_left = 447.0
 margin_top = 163.0
 margin_right = 832.0
@@ -184,7 +188,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Particles2D" type="Particles2D" parent="CenterContainer"]
+[node name="Particles2D" type="Particles2D" parent="Foreground/MenuTitle"]
 position = Vector2( 643, 215 )
 amount = 50
 lifetime = 3.0
@@ -193,27 +197,30 @@ randomness = 1.0
 visibility_rect = Rect2( -183.954, -0.993805, 365.271, 113.556 )
 process_material = SubResource( 5 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MenuButtons" type="VBoxContainer" parent="Foreground"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -100.0
-margin_top = -34.0
+margin_top = -95.0
 margin_right = 100.0
-margin_bottom = 130.0
+margin_bottom = 233.0
 theme = ExtResource( 4 )
 custom_constants/separation = 16
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="PlayButton" type="Button" parent="Foreground/MenuButtons"]
 margin_right = 200.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 200, 70 )
+hint_tooltip = "Start game"
+focus_neighbour_left = NodePath("../LeaderBoardButton")
+focus_neighbour_top = NodePath("../LeaderBoardButton")
+focus_neighbour_right = NodePath("../ExitButton")
 focus_neighbour_bottom = NodePath("../ExitButton")
 focus_next = NodePath("../ExitButton")
+focus_previous = NodePath("../LeaderBoardButton")
+theme = ExtResource( 4 )
 text = "Start"
 expand_icon = true
 script = ExtResource( 2 )
@@ -221,7 +228,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="ExitButton" type="Button" parent="Foreground/MenuButtons"]
 margin_top = 86.0
 margin_right = 200.0
 margin_bottom = 156.0
@@ -234,10 +241,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeaderBoardButton" type="Button" parent="VBoxContainer"]
+[node name="SettingsButton" type="Button" parent="Foreground/MenuButtons"]
 margin_top = 172.0
 margin_right = 200.0
 margin_bottom = 242.0
+rect_min_size = Vector2( 200, 70 )
+focus_neighbour_top = NodePath("../PlayButton")
+focus_previous = NodePath("../PlayButton")
+text = "Settings"
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeaderBoardButton" type="Button" parent="Foreground/MenuButtons"]
+margin_top = 258.0
+margin_right = 200.0
+margin_bottom = 328.0
 rect_min_size = Vector2( 200, 70 )
 focus_neighbour_top = NodePath("../PlayButton")
 focus_previous = NodePath("../PlayButton")
@@ -247,7 +267,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Version" type="VBoxContainer" parent="."]
+[node name="Version" type="VBoxContainer" parent="Foreground"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
@@ -255,18 +275,15 @@ margin_top = -90.0
 margin_right = 198.0
 margin_bottom = -18.0
 theme = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="GameVersion" type="Label" parent="Version"]
+[node name="GameVersion" type="Label" parent="Foreground/Version"]
 margin_right = 182.0
 margin_bottom = 19.0
 custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "<x.y.z>"
 script = ExtResource( 6 )
 
-[node name="GodotVersion" type="Label" parent="Version"]
+[node name="GodotVersion" type="Label" parent="Foreground/Version"]
 margin_top = 27.0
 margin_right = 182.0
 margin_bottom = 46.0
@@ -275,30 +292,27 @@ custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "<GodotVersion>"
 script = ExtResource( 8 )
 
-[node name="NetworkStatus" type="VBoxContainer" parent="."]
+[node name="NetworkStatus" type="VBoxContainer" parent="Foreground"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -209.0
 margin_top = 11.0
 margin_right = -9.0
-margin_bottom = 34.0
+margin_bottom = 57.0
 theme = ExtResource( 4 )
 script = ExtResource( 11 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NetworkStatus"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Foreground/NetworkStatus"]
 margin_right = 200.0
 margin_bottom = 19.0
 
-[node name="NetworkStatusLabel" type="Label" parent="NetworkStatus/HBoxContainer"]
+[node name="NetworkStatusLabel" type="Label" parent="Foreground/NetworkStatus/HBoxContainer"]
 margin_right = 157.0
 margin_bottom = 19.0
 custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "Network Status"
 
-[node name="TextureRect" type="TextureButton" parent="NetworkStatus/HBoxContainer"]
+[node name="TextureRect" type="TextureButton" parent="Foreground/NetworkStatus/HBoxContainer"]
 margin_left = 165.0
 margin_right = 200.0
 margin_bottom = 19.0
@@ -308,23 +322,23 @@ texture_normal = ExtResource( 10 )
 expand = true
 stretch_mode = 5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="NetworkStatus"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Foreground/NetworkStatus"]
 margin_top = 27.0
 margin_right = 200.0
 margin_bottom = 46.0
 
-[node name="Label" type="Label" parent="NetworkStatus/HBoxContainer2"]
+[node name="Label" type="Label" parent="Foreground/NetworkStatus/HBoxContainer2"]
 margin_right = 46.0
 margin_bottom = 19.0
 text = "User:"
 
-[node name="Label2" type="Label" parent="NetworkStatus/HBoxContainer2"]
+[node name="Label2" type="Label" parent="Foreground/NetworkStatus/HBoxContainer2"]
 margin_left = 54.0
 margin_right = 100.0
 margin_bottom = 19.0
 text = "None"
 
-[node name="Credits" type="VBoxContainer" parent="."]
+[node name="Credits" type="VBoxContainer" parent="Foreground"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -335,18 +349,15 @@ margin_right = -16.0
 margin_bottom = -16.0
 grow_horizontal = 0
 grow_vertical = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="MadeByLabel" type="Label" parent="Credits"]
+[node name="MadeByLabel" type="Label" parent="Foreground/Credits"]
 margin_right = 131.0
 margin_bottom = 19.0
 theme = ExtResource( 4 )
 custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "made by:"
 
-[node name="Developer1" type="Label" parent="Credits"]
+[node name="Developer1" type="Label" parent="Foreground/Credits"]
 margin_top = 27.0
 margin_right = 131.0
 margin_bottom = 46.0
@@ -355,7 +366,7 @@ theme = ExtResource( 4 )
 custom_colors/font_color = Color( 0.843137, 0.0588235, 0.0588235, 1 )
 text = "VoidMoose"
 
-[node name="Developer2" type="Label" parent="Credits"]
+[node name="Developer2" type="Label" parent="Foreground/Credits"]
 visible = false
 margin_top = 76.0
 margin_right = 243.0
@@ -364,7 +375,7 @@ grow_horizontal = 0
 theme = ExtResource( 4 )
 text = "Developer 2"
 
-[node name="Developer3" type="Label" parent="Credits"]
+[node name="Developer3" type="Label" parent="Foreground/Credits"]
 visible = false
 margin_top = 114.0
 margin_right = 243.0
@@ -373,7 +384,161 @@ grow_horizontal = 0
 theme = ExtResource( 4 )
 text = "Developer 3"
 
+[node name="SettingsPanel" type="Panel" parent="Foreground"]
+visible = false
+margin_left = 436.0
+margin_top = 236.0
+margin_right = 844.0
+margin_bottom = 621.0
+theme = ExtResource( 4 )
+
+[node name="SettingsMenu" type="MarginContainer" parent="Foreground/SettingsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="SettingsList" type="VBoxContainer" parent="Foreground/SettingsPanel/SettingsMenu"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 398.0
+margin_bottom = 375.0
+
+[node name="Title" type="CenterContainer" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList"]
+margin_right = 388.0
+margin_bottom = 37.0
+
+[node name="Label" type="Label" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/Title"]
+margin_left = 113.0
+margin_right = 274.0
+margin_bottom = 37.0
+custom_fonts/font = ExtResource( 16 )
+text = "Settings"
+
+[node name="MasterVolume" type="HBoxContainer" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList"]
+margin_top = 45.0
+margin_right = 388.0
+margin_bottom = 77.0
+
+[node name="Label" type="Label" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/MasterVolume"]
+margin_right = 190.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 5
+text = "Master Volume"
+
+[node name="HSlider" type="HSlider" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/MasterVolume"]
+margin_left = 198.0
+margin_right = 388.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SfxVolume" type="HBoxContainer" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList"]
+margin_top = 85.0
+margin_right = 388.0
+margin_bottom = 117.0
+
+[node name="Label" type="Label" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/SfxVolume"]
+margin_right = 190.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Sfx Volume"
+
+[node name="HSlider" type="HSlider" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/SfxVolume"]
+margin_left = 198.0
+margin_right = 388.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MusicVolume" type="HBoxContainer" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList"]
+margin_top = 125.0
+margin_right = 388.0
+margin_bottom = 157.0
+
+[node name="Label" type="Label" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/MusicVolume"]
+margin_right = 190.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Music Volume"
+
+[node name="HSlider" type="HSlider" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/MusicVolume"]
+margin_left = 198.0
+margin_right = 388.0
+margin_bottom = 32.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Fullscreen" type="HBoxContainer" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList"]
+margin_top = 165.0
+margin_right = 388.0
+margin_bottom = 229.0
+
+[node name="Label" type="Label" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/Fullscreen"]
+margin_right = 252.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "FullScreen"
+valign = 1
+
+[node name="CheckButton" type="CheckButton" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/Fullscreen"]
+margin_left = 260.0
+margin_right = 388.0
+margin_bottom = 64.0
+
+[node name="Windowed" type="HBoxContainer" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList"]
+margin_top = 237.0
+margin_right = 388.0
+margin_bottom = 301.0
+
+[node name="Label" type="Label" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/Windowed"]
+margin_right = 252.0
+margin_bottom = 64.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+text = "Windowed"
+valign = 1
+
+[node name="CheckButton" type="CheckButton" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/Windowed"]
+margin_left = 260.0
+margin_right = 388.0
+margin_bottom = 64.0
+disabled = true
+
+[node name="Buttons" type="HBoxContainer" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList"]
+margin_top = 309.0
+margin_right = 388.0
+margin_bottom = 346.0
+alignment = 1
+
+[node name="BackButton" type="Button" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/Buttons"]
+margin_left = 53.0
+margin_right = 139.0
+margin_bottom = 37.0
+text = "Back"
+
+[node name="SaveButton" type="Button" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/Buttons"]
+margin_left = 147.0
+margin_right = 232.0
+margin_bottom = 37.0
+disabled = true
+text = "Save"
+
+[node name="ApplyButton" type="Button" parent="Foreground/SettingsPanel/SettingsMenu/SettingsList/Buttons"]
+margin_left = 240.0
+margin_right = 335.0
+margin_bottom = 37.0
+disabled = true
+text = "Apply"
+
 [node name="Splash" type="CanvasLayer" parent="."]
+layer = 100
 script = ExtResource( 15 )
 
 [node name="ColorRect" type="ColorRect" parent="Splash"]
@@ -392,7 +557,9 @@ texture = ExtResource( 14 )
 anims/RESET = SubResource( 10 )
 anims/fade_out = SubResource( 11 )
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="VBoxContainer/PlayButton" method="_on_Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="VBoxContainer/ExitButton" method="_on_ExitButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/LeaderBoardButton" to="VBoxContainer/LeaderBoardButton" method="_on_LeaderBoardButton_pressed"]
-[connection signal="pressed" from="NetworkStatus/HBoxContainer/TextureRect" to="NetworkStatus" method="_on_TextureRect_pressed"]
+[connection signal="pressed" from="Foreground/MenuButtons/PlayButton" to="Foreground/MenuButtons/PlayButton" method="_on_Button_pressed"]
+[connection signal="pressed" from="Foreground/MenuButtons/ExitButton" to="Foreground/MenuButtons/ExitButton" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="Foreground/MenuButtons/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="Foreground/MenuButtons/LeaderBoardButton" to="Foreground/MenuButtons/LeaderBoardButton" method="_on_LeaderBoardButton_pressed"]
+[connection signal="pressed" from="Foreground/NetworkStatus/HBoxContainer/TextureRect" to="Foreground/NetworkStatus" method="_on_TextureRect_pressed"]
+[connection signal="pressed" from="Foreground/SettingsPanel/SettingsMenu/SettingsList/Buttons/BackButton" to="." method="_on_BackButton_pressed"]
