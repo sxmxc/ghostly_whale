@@ -161,7 +161,7 @@ jobs:
     name: Android Export
     runs-on: ubuntu-latest
     container:
-      image: davcri/godot-game-template-ci:3.4.4
+      image: barichello/godot-ci:3.4.4
     steps:
       - name: Checkout
         uses: actions/checkout@v1
